@@ -7,7 +7,7 @@ int	main(void)
 
 	horde = zombieHorde(N, "Student");
 	for (int x = 0; x < N; x++)
-		horde->announce();
+		horde[x].announce();
 	delete [] horde;
 	return (0);
 }
