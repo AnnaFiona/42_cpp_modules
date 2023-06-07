@@ -16,6 +16,11 @@ void	HumanB::setWeapon(Weapon &weapon)
 //member-function
 void	HumanB::attack()
 {
+	if (this->weapon == NULL)
+	{
+		std::cout << "Error: " << this->name << " cannot attack: Weapon not set" << std::endl;
+		return;
+	}
 	std::cout << this->name;
 	std::cout << " attacks with their ";
 	std::cout << this->weapon->getType() << std::endl;
