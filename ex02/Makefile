@@ -1,19 +1,29 @@
 NAME = brain
 
+CXX = c++
+FLAGS = -Wall -Werror -Wextra -std=c++98
+
 SRC =	main.cpp
 
 OBJ = $(SRC:.cpp=.o)
+
+DEP = $(SRC:.cpp=.d)
 
 .PHONY: clean fclean all
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	c++ -Wall -Werror -Wextra $(OBJ) -std=c++98 -o $(NAME)
+	$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
+
+-include $(DEP)
+
+%.o: %.cpp
+	$(CXX) $(FLAGS) -MMD -MP $< -o $@ -c
 
 clean:
-	@rm -f $(OBJ)
-	@echo all .o-files deleted
+	@rm -f $(OBJ) $(DEP)
+	@echo all .o and .d files deleted
 
 fclean: clean
 	@rm -f $(NAME)
