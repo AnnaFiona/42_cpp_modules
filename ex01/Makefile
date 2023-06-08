@@ -3,6 +3,9 @@ NAME = zombieHorde
 CXX = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
+CXX = c++
+FLAGS = -Wall -Werror -Wextra -std=c++98
+
 SRC =	main.cpp \
 		Zombie.cpp \
 		zombieHorde.cpp
@@ -21,11 +24,11 @@ $(NAME): $(OBJ)
 -include $(DEP)
 
 %.o: %.cpp
-	$(CXX) $(FLAGS) -MMD -MP 
+	$(CXX) $(FLAGS) -MMD -MP $< -o $@ -c
 
 clean:
-	@rm -f $(OBJ)
-	@echo all .o-files deleted
+	@rm -f $(OBJ) $(DEP)
+	@echo all .o and .d files deleted
 
 fclean: clean
 	@rm -f $(NAME)
