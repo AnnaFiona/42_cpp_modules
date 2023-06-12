@@ -9,11 +9,19 @@ Fixed::Fixed()
 Fixed::Fixed(const int raw)
 {
 	//std::cout << "Int constructor called" << std::endl;
+	if (raw > 8388608 || raw < -8388608)
+		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
+	else if (raw> 8388607)
+		std::cerr << "warning: your number could be out of range, it might overflow" << std::endl;
 	this->RawBits = raw * 256;
 }
 Fixed::Fixed(const float raw)
 {
 	//std::cout << "Float constructor called" << std::endl;
+	if (raw > 8388608 || raw < -8388608)
+		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
+	else if (raw> 8388607)
+		std::cerr << "warning: your number could be out of range, it might overflow" << std::endl;
 	this->RawBits = roundf(raw * 256);
 }
 Fixed::Fixed(const Fixed &F)
@@ -41,6 +49,10 @@ int		Fixed::getRawBits( void ) const
 void	Fixed::setRawBits( int const raw )
 {
 	//std::cout << "setRawBits member function called" << std::endl;
+	if (raw > 8388608 || raw < -8388608)
+		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
+	else if (raw> 8388607)
+		std::cerr << "warning: your number could be out of range, it might overflow" << std::endl;
 	this->RawBits = raw;
 }
 

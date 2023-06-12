@@ -1,10 +1,15 @@
-NAME = fixed
+NAME = test
 
 CXX = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =	Fixed.cpp \
-		main.cpp
+SRC =	../Fixed.cpp \
+		arithmetric_tests.cpp \
+		comparison_tests.cpp \
+		in-decrement_tests.cpp \
+		min_max_tests.cpp \
+		oor_numbers_tests.cpp \
+		test.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -16,6 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
+	./test
 
 -include $(DEP)
 
