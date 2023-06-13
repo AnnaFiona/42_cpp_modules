@@ -18,7 +18,7 @@ void	HumanB::attack()
 {
 	if (this->weapon == NULL)
 	{
-		std::cout << "Error: " << this->name << " cannot attack: Weapon not set" << std::endl;
+		std::cerr << "Error: " << this->name << " cannot attack: Weapon not set" << std::endl;
 		return;
 	}
 	std::cout << this->name;
