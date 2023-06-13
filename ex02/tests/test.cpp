@@ -82,16 +82,15 @@ int	main()
 	Fixed	c(29);
 	Fixed	d(-2);
 	Fixed	e(0);
-	// Fixed	max(INT_MAX);
-	// Fixed	maxPlusOne(INT_MAX + 1);
-	// Fixed	min(INT_MIN);
-	// Fixed	minMinusOne(INT_MIN - 1);
 
 	compare("getRawBits: ", a.getRawBits(), 6090, 'n');
 	compare(NULL, a.getRawBits(), 6090, 'y');
 
 	c.setRawBits(2890);
-	compare("setRawBits: ", c.getRawBits(), 2890, 'y');
+	compare("setRawBits: ", c.getRawBits(), 2890, 'n');
+	c.setRawBits(2147483647);
+	compare(NULL, c.getRawBits(), 2147483647, 'n');
+	compare(NULL, c.toInt(), 8388607, 'n');
 
 	compare("toFloat: ", a.toFloat(), 23.79f, 'n');
 	compare(NULL, d.toFloat(), -2.0, 'n');
@@ -101,28 +100,12 @@ int	main()
 	compare(NULL, d.toInt(), -2, 'n');
 	compare(NULL, e.toInt(), 0, 'y');
 	std::cout << std::endl;
-	// compare(NULL, max.toInt(), INT_MAX, 'y');
-	// compare(NULL, maxPlusOne.toInt(), INT_MAX + 1, 'y');
-	// compare(NULL, min.toInt(), INT_MIN, 'y');
-	// compare(NULL, minMinusOne.toInt(), INT_MIN, 'y');
 
 	comparison_tests();
 	arithmetric_tests();
 	in_and_decrement_tests();
 	min_max_tests();
 	oor_numbers_tests();
-
-	//compare(NULL, , , 'n');
-	// Fixed	a(23.79f);
-	// Fixed	b(23.7948f);
-	// Fixed	c(11.2890f);
-	// Fixed	d(-2);
-	// Fixed	e(0);
-/* 	Fixed h(Fixed::max(a, b));
-	Fixed::min(b, a);
-	a.max(a, b);
-	a.min(b, a); */
-
 
 	return (0);
 }

@@ -3,49 +3,48 @@
 //con- and destructors
 Fixed::Fixed()
 {
-	//std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	this->RawBits = 0;
 }
 Fixed::Fixed(const int raw)
 {
-	//std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 	if (raw > 8388608 || raw < -8388608)
 		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
 	this->RawBits = raw * 256;
 }
 Fixed::Fixed(const float raw)
 {
-	//std::cout << "Float constructor called" << std::endl;
-	std::cout << "raw: " << raw << std::endl;
+	std::cout << "Float constructor called" << std::endl;
 	if (raw > 8388607.7499 || raw < -8388608)
 		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
 	this->RawBits = roundf(raw * 256);
 }
 Fixed::Fixed(const Fixed &F)
 {
-	//std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	this->operator=(F);
 }
 Fixed	&Fixed::operator = (const Fixed &F)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	this->RawBits = F.getRawBits();
 	return (*this);
 }
 Fixed::~Fixed()
 {
-	//std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 //get- and setter
 int		Fixed::getRawBits( void ) const
 {
-	//std::cout << "getRawBits member function called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	return (this->RawBits);
 }
 void	Fixed::setRawBits( int const raw )
 {
-	//std::cout << "setRawBits member function called" << std::endl;
+	std::cout << "setRawBits member function called" << std::endl;
 	this->RawBits = raw;
 }
 
@@ -125,8 +124,6 @@ float	Fixed::operator * (const Fixed &F) const
 float	Fixed::operator / (const Fixed &F) const
 {
 	float	temp = static_cast<float>(this->RawBits / F.RawBits);
-	//float	temp = this->toFloat() / F.toFloat();
-	//temp *= 256;
 	return (temp);
 }
 
@@ -155,30 +152,30 @@ Fixed	Fixed::operator-- (int)
 }
 
 //min and max (don't really know what to do when they are equal so I am just returning a, because throwing an error seems a bit excessive)
-/* static Fixed	&min(Fixed &a, Fixed &b) const
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
 {
 	if (b < a)
 		return (b);
 	return (a);
 }
-static const Fixed	&min(const Fixed &a, const Fixed &b) const
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 {
 	if (b < a)
 		return (b);
 	return (a);
 }
-static Fixed	&max(Fixed &a, Fixed &b) const
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
 {
 	if (b > a)
 		return (b);
 	return (a);
 }
-static const Fixed	&max(const Fixed &a, const Fixed &b) const
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
 	if (b > a)
 		return (b);
 	return (a);
-} */
+}
 
 
 //<<-operator overload function////////////////////////////////////////////////

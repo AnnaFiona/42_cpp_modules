@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-/* int main( void )
+int main( void )
 {
 	Fixed		a;
 	Fixed	b( 10 );
@@ -31,41 +31,31 @@
 	std::cout << "a is " << b << std::endl;
 	std::cout << "a is " << b << std::endl;
 
-	
+////////////////////////////////////////////////////////////////////////7
 
-
-
-
-
-	return (0);
-} */
-
-
-int main( void )
-{
-	Fixed a(10);
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed z(10);
+	Fixed const y( Fixed( 5.05f ) * Fixed( 2 ) );
 
 	std::cout << "plus:" << std::endl;
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl << std::endl;
+	std::cout << z << std::endl;
+	std::cout << ++z << std::endl;
+	std::cout << z << std::endl;
+	std::cout << z++ << std::endl;
+	std::cout << z << std::endl << std::endl;
 
 	std::cout << "minus:" << std::endl;
-	std::cout << a-- << std::endl;
-	std::cout << a << std::endl;
-	std::cout << --a << std::endl;
+	std::cout << z-- << std::endl;
+	std::cout << z << std::endl;
+	std::cout << --z << std::endl;
 
 	Fixed	max(8388607.7499f);
 
 	std::cout << "toInt: " << max.toInt() << std::endl;
 	std::cout << "toFloat: " << max.toFloat() << std::endl;
 	std::cout << "max: : " << max << std::endl;
-	//std::cout << b << std::endl;
+	std::cout << y << std::endl;
 
-	//std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << Fixed::max( z, y ) << std::endl;
 
-	return 0;
+	return (0);
 }
