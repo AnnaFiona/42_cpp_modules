@@ -31,7 +31,7 @@
 	std::cout << "a is " << b << std::endl;
 	std::cout << "a is " << b << std::endl;
 
-
+	
 
 
 
@@ -58,6 +58,11 @@ int main( void )
 	std::cout << a << std::endl;
 	std::cout << --a << std::endl;
 
+	Fixed	max(8388607.7499f);
+
+	std::cout << "toInt: " << max.toInt() << std::endl;
+	std::cout << "toFloat: " << max.toFloat() << std::endl;
+	std::cout << "max: : " << max << std::endl;
 	//std::cout << b << std::endl;
 
 	//std::cout << Fixed::max( a, b ) << std::endl;

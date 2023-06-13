@@ -11,17 +11,14 @@ Fixed::Fixed(const int raw)
 	//std::cout << "Int constructor called" << std::endl;
 	if (raw > 8388608 || raw < -8388608)
 		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
-	else if (raw> 8388607)
-		std::cerr << "warning: your number could be out of range, it might overflow" << std::endl;
 	this->RawBits = raw * 256;
 }
 Fixed::Fixed(const float raw)
 {
 	//std::cout << "Float constructor called" << std::endl;
-	if (raw > 8388608 || raw < -8388608)
+	std::cout << "raw: " << raw << std::endl;
+	if (raw > 8388607.7499 || raw < -8388608)
 		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
-	else if (raw> 8388607)
-		std::cerr << "warning: your number could be out of range, it might overflow" << std::endl;
 	this->RawBits = roundf(raw * 256);
 }
 Fixed::Fixed(const Fixed &F)
@@ -49,10 +46,6 @@ int		Fixed::getRawBits( void ) const
 void	Fixed::setRawBits( int const raw )
 {
 	//std::cout << "setRawBits member function called" << std::endl;
-	if (raw > 8388608 || raw < -8388608)
-		std::cerr << "warning: your number is out of range, it will overflow" << std::endl;
-	else if (raw> 8388607)
-		std::cerr << "warning: your number could be out of range, it might overflow" << std::endl;
 	this->RawBits = raw;
 }
 
@@ -162,25 +155,25 @@ Fixed	Fixed::operator-- (int)
 }
 
 //min and max (don't really know what to do when they are equal so I am just returning a, because throwing an error seems a bit excessive)
-/* static Fixed	&min(Fixed &a, Fixed &b)
+/* static Fixed	&min(Fixed &a, Fixed &b) const
 {
 	if (b < a)
 		return (b);
 	return (a);
 }
-static const Fixed	&min(const Fixed &a, const Fixed &b)
+static const Fixed	&min(const Fixed &a, const Fixed &b) const
 {
 	if (b < a)
 		return (b);
 	return (a);
 }
-static Fixed	&max(Fixed &a, Fixed &b)
+static Fixed	&max(Fixed &a, Fixed &b) const
 {
 	if (b > a)
 		return (b);
 	return (a);
 }
-static const Fixed	&max(const Fixed &a, const Fixed &b)
+static const Fixed	&max(const Fixed &a, const Fixed &b) const
 {
 	if (b > a)
 		return (b);
