@@ -1,11 +1,10 @@
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#ifndef SCAV_TRAP_HPP
+# define SCAV_TRAP_HPP
 
-# include <algorithm> //allowed?
-# include <iostream>
-# include <string>
+# include "ClapTrap.hpp"
 
-class ClapTrap
+
+class ScavTrap: public ClapTrap
 {
 private:
 	std::string	_Name;
@@ -15,11 +14,11 @@ private:
 
 public:
 //con- and destructors
-	ClapTrap();
-	ClapTrap(const std::string name);
-	ClapTrap(const ClapTrap &C);
-	ClapTrap	&operator = (ClapTrap C);
-	~ClapTrap();
+	ScavTrap();
+	ScavTrap(const std::string name);
+	ScavTrap(const ScavTrap &C);
+	ScavTrap	&operator = (ScavTrap C);
+	~ScavTrap();
 
 //getters
 	std::string	get_Name() const;
@@ -32,10 +31,8 @@ public:
 	void	set_EnergyPoints(const unsigned int energy_points);
 	void	set_AttackDamage(const unsigned int attack_damage);
 
-//member-functions
-	void	attack(const std::string& target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+//member-function
+	void	guardGate();
 };
 
 #endif
