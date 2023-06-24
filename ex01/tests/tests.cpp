@@ -36,6 +36,7 @@ int main()
 		return (1);
 	}
 	clap_trap_tests(file);
+	scav_trap_tests(file);
 	file.close();
 
 	return (0);

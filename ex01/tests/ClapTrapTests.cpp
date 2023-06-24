@@ -13,4 +13,5 @@ void	clap_trap_tests(std::ofstream &file)
 		one.beRepaired(1);
 	compare(file, NULL, one.get_EnergyPoints(), 0, 'n');
 	compare(file, NULL, one.get_HitPoints(), 19, 'n');
+	file << std::endl;
 }
