@@ -17,21 +17,18 @@ ClapTrap::ClapTrap(const std::string name)
 	this->_AttackDamage = 0;
 	std::cout << "name(?)-constructor of ClapTrap '" << this->_Name << "' called" << std::endl;
 }
-ClapTrap::ClapTrap(const ClapTrap &C)
+ClapTrap::ClapTrap(ClapTrap &C)
+{
+	*(this) = C;
+	std::cout << "copy-constructor of ClapTrap '" << this->_Name << "' called" << std::endl;
+}
+ClapTrap	&ClapTrap::operator = (ClapTrap &C)
 {
 	this->_Name = C._Name;
 	this->_HitPoints = C._HitPoints;
 	this->_EnergyPoints = C._EnergyPoints;
 	this->_AttackDamage = C._AttackDamage;
-	std::cout << "copy-constructor of ClapTrap '" << this->_Name << "' called" << std::endl;
-}
-ClapTrap	&ClapTrap::operator = (ClapTrap C)
-{
 	std::cout << "copy assignment operator of ClapTrap '" << this->_Name << "' called" << std::endl;
-	std::swap(this->_Name, C._Name);
-	std::swap(this->_HitPoints, C._HitPoints);
-	std::swap(this->_EnergyPoints, C._EnergyPoints);
-	std::swap(this->_AttackDamage, C._AttackDamage);
 	return (*this);
 }
 ClapTrap::~ClapTrap()

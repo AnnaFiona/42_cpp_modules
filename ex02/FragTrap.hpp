@@ -10,8 +10,8 @@ public:
 //con- and destructors
 	FragTrap();
 	FragTrap(const std::string name);
-	FragTrap(const FragTrap &C);
-	FragTrap	&operator = (FragTrap C);
+	FragTrap(FragTrap &C);
+	FragTrap	&operator = (FragTrap &C);
 	~FragTrap();
 
 //member-function

@@ -1,7 +1,6 @@
 #ifndef CLAPTRAP_HPP
 # define CLAPTRAP_HPP
 
-# include <algorithm> //allowed?
 # include <iostream>
 # include <string>
 
@@ -17,8 +16,8 @@ public:
 //con- and destructors
 	ClapTrap();
 	ClapTrap(const std::string name);
-	ClapTrap(const ClapTrap &C);
-	ClapTrap	&operator = (ClapTrap C);
+	ClapTrap(ClapTrap &C);
+	ClapTrap	&operator = (ClapTrap &C);
 	~ClapTrap();
 
 //getters

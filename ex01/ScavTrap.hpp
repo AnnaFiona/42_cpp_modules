@@ -10,11 +10,12 @@ public:
 //con- and destructors
 	ScavTrap();
 	ScavTrap(const std::string name);
-	ScavTrap(const ScavTrap &C);
-	ScavTrap	&operator = (ScavTrap C);
+	ScavTrap(ScavTrap &C);
+	ScavTrap	&operator = (ScavTrap &C);
 	~ScavTrap();
 
-//member-function
+//member-functions
+	void	attack(const std::string& target);
 	void	guardGate();
 };
 

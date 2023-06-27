@@ -17,9 +17,9 @@ DiamondTrap::DiamondTrap(const std::string name) : ClapTrap(name), FragTrap (nam
 	this->FragTrap::_HitPoints = 100;
 	this->ScavTrap::_EnergyPoints = 50;
 	this->FragTrap::_AttackDamage = 30;
-	std::cout << "_Name(?)-constructor of DiamondTrap '" << this->_Name << "' called" << std::endl;
+	std::cout << "name(?)-constructor of DiamondTrap '" << this->_Name << "' called" << std::endl;
 }
-DiamondTrap::DiamondTrap(const DiamondTrap &C) : ClapTrap(C), FragTrap (C), ScavTrap (C)
+DiamondTrap::DiamondTrap(DiamondTrap &C) : ClapTrap(C), FragTrap (C), ScavTrap (C)
 {
 	this->_Name = C._Name;
 	this->ClapTrap::_Name = C.ClapTrap::_Name;
@@ -28,14 +28,14 @@ DiamondTrap::DiamondTrap(const DiamondTrap &C) : ClapTrap(C), FragTrap (C), Scav
 	this->FragTrap::_AttackDamage = C.FragTrap::_AttackDamage;
 	std::cout << "copy-constructor of DiamondTrap '" << this->_Name << "' called" << std::endl;
 }
-DiamondTrap	&DiamondTrap::operator = (DiamondTrap C)
+DiamondTrap	&DiamondTrap::operator = (DiamondTrap &C)
 {
+	this->_Name = C._Name;
+	this->ClapTrap::_Name = C.ClapTrap::_Name;
+	this->_HitPoints = C._HitPoints;
+	this->_EnergyPoints = C._EnergyPoints;
+	this->_AttackDamage = C._AttackDamage;
 	std::cout << "copy assignment operator of DiamondTrap '" << this->_Name << "' called" << std::endl;
-	std::swap(this->_Name, C._Name);
-	std::swap(this->ClapTrap::_Name, C.ClapTrap::_Name);
-	std::swap(this->FragTrap::_HitPoints, C.FragTrap::_HitPoints);
-	std::swap(this->ScavTrap::_EnergyPoints, C.ScavTrap::_EnergyPoints);
-	std::swap(this->FragTrap::_AttackDamage, C.FragTrap::_AttackDamage);
 	return (*this);
 }
 DiamondTrap::~DiamondTrap()
@@ -84,10 +84,6 @@ void	DiamondTrap::set_AttackDamage(const unsigned int attack_damage)
 }
 
 //member-functions
-void	DiamondTrap::attack(const std::string& target)
-{
-	this->ScavTrap::attack(target);
-}
 void	DiamondTrap::whoAmI()
 {
 	std::cout << this->_Name << ", " << this->ClapTrap::_Name << std::endl;

@@ -9,12 +9,13 @@ class DiamondTrap:public FragTrap, public ScavTrap
 {
 private:
 	std::string _Name;
+	
 public:
 //con- and destructors
 	DiamondTrap();
 	DiamondTrap(const std::string name);
-	DiamondTrap(const DiamondTrap &C);
-	DiamondTrap	&operator = (DiamondTrap C);
+	DiamondTrap(DiamondTrap &C);
+	DiamondTrap	&operator = (DiamondTrap &C);
 	~DiamondTrap();
 
 //getters
@@ -30,7 +31,7 @@ public:
 	void	set_AttackDamage(const unsigned int attack_damage);
 
 //member-functions
-void	attack(const std::string& target);
+using ScavTrap::attack;
 void	whoAmI();
 
 };
