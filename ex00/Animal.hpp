@@ -5,7 +5,7 @@
 
 class Animal
 {
-private:
+protected:
 	std::string type;
 
 public:
@@ -15,4 +15,9 @@ public:
 	Animal(Animal &C);
 	Animal	&operator = (Animal &C);
 	~Animal();
+
+//getter
+	std::string	getType(void) const;
+//setter
+	void	setType(std::string type);
 };

@@ -27,3 +27,14 @@ Animal::~Animal()
 {
 	std::cout << "destructor of Animal '" << this->type << "' called" << std::endl;
 }
+
+//getter
+std::string	Animal::getType(void) const
+{
+	return (this->type);
+}
+//setter
+void	Animal::setType(std::string type)
+{
+	this->type = type;
+}
