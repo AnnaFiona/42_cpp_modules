@@ -1,13 +1,16 @@
 #pragma once
 
 # include "../Animal.hpp"
+# include <iostream>
 # include <fstream>
+# include <string>
+# include <stdlib.h> // allowed?
 
-
-//ClapTrapTests.cpp
-void	animal_tests(std::ofstream &file);
+//AnimalTests.cpp
+void	animal_tests();
 
 //tests.cpp
-void	ok(std::ofstream &file);
-void	fail(std::ofstream &file);
-void	compare(std::ofstream &file, const char *test, int my_output, int right_output, char last);
+void	    ok();
+void	    fail();
+void	    compare(const char *test, int my_output, int right_output, char last);
+std::string	get_right_output(char *right_output_file);
