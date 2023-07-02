@@ -1,0 +1,2 @@
+name(?)-constructor of Animal 'Cow' called
+destructor of Animal 'Cow' called

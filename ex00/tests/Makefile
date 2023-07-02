@@ -5,7 +5,8 @@ DEP = tests.hpp
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =	AnimalTests.cpp \
+SRC =	../Animal.cpp \
+		AnimalTests.cpp \
 		tests.cpp
 
 OBJDIR = ./objects_and_dependencies/
