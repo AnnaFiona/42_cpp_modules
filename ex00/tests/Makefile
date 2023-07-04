@@ -7,6 +7,8 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	../Animal.cpp \
 		AnimalTests.cpp \
+		compare_functions.cpp \
+		test_utils.cpp \
 		tests.cpp
 
 OBJDIR = ./objects_and_dependencies/
@@ -32,8 +34,8 @@ clean:
 	@echo all .o and .d files deleted
 
 fclean: clean
-	@rm -f $(NAME) test_result.txt
+	@rm -f $(NAME) my_output/*.txt
 	@echo
-	@echo ...and the $(NAME) and test_result.txt too
+	@echo ...and the $(NAME) and the my_output-files too
 
 re: fclean all

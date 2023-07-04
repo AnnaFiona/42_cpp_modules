@@ -1,7 +1,2 @@
-ffffffffffffffffffffffffffff
-voidv
-v
-
-voidvv
-
-voidv
+name(?)-constructor of Animal 'Cow' called
+destructor of Animal 'sheep' called
