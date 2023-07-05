@@ -1,16 +1,20 @@
-NAME = clap_trap
+NAME = animal
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =	ClapTrap.cpp \
+SRC =	Animal.cpp \
+		Cat.cpp \
+		Dog.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp \
 		main.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
 
-DEP = ClapTrap.hpp
+DEP = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 
 .PHONY: clean fclean all
 

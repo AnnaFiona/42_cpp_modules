@@ -3,17 +3,17 @@
 #include <iostream>
 #include <string>
 
-class Animal
+class WrongAnimal
 {
 protected:
 	std::string type;
 
 public:
 //con- and destructors
-	Animal();
-	Animal(Animal &C);
-	Animal	&operator = (Animal &C);
-	~Animal();
+	WrongAnimal();
+	WrongAnimal(WrongAnimal &C);
+	WrongAnimal	&operator = (WrongAnimal &C);
+	~WrongAnimal();
 
 //getter
 	std::string	getType(void) const;
@@ -21,5 +21,5 @@ public:
 	void	setType(std::string type);
 
 //member-function
-	virtual void	makeSound() const;
+	void	makeSound() const;
 };

@@ -4,13 +4,7 @@
 Animal::Animal()
 {
 	this->type = "Animal";
-
 	std::cout << "default-constructor of Animal '" << this->type << "' called" << std::endl;
-}
-Animal::Animal(const std::string type)
-{
-	this->type = type;
-	std::cout << "name(?)-constructor of Animal '" << this->type << "' called" << std::endl;
 }
 Animal::Animal(Animal &C)
 {
@@ -37,4 +31,10 @@ std::string	Animal::getType(void) const
 void	Animal::setType(std::string type)
 {
 	this->type = type;
+}
+
+//member-function
+void	Animal::makeSound() const
+{
+	std::cout << "..." << std::endl;
 }

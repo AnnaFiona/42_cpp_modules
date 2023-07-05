@@ -1,7 +1,9 @@
-# include "../Animal.hpp"
+# include "../WrongCat.hpp"
+# include "../Cat.hpp"
+# include "../Dog.hpp"
 #include "tests.hpp"
 
-void	animal_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf)
+void	mixed_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf)
 {
 	Animal	cow;
 	Animal	animal;
@@ -19,10 +21,10 @@ void	animal_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf)
 	compare(filebuf, coutbuf, NULL, animal.getType(), "Cow", 'y');
 }
 
-void    animal_tests()
+void    mixed_tests()
 {
-	std::cout << "///Animal-Class tests///" << std::endl;
-	constructor_tests_framework(&animal_constructor_tests, "my_output/animal.txt", \
-									"right_output/animal.txt", "class messages");
+	std::cout << "///Mixed-Class tests///" << std::endl;
+	constructor_tests_framework(&mixed_constructor_tests, "my_output/mixed.txt", \
+									"right_output/mixed.txt", "class messages");
 	std::cout << std::endl;
 }

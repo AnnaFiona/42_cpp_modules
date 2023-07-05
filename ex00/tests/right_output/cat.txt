@@ -1,0 +1,18 @@
+default-constructor of Animal 'Animal' called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Cat 'Cat' called
+copy assignment operator of Animal 'Animal' called
+copy-constructor of Animal 'Animal' called
+copy assignment operator of Cat 'Cat' called
+copy-constructor of Cat 'Cat' called
+Miau
+Miau
+Miau
+copy assignment operator of Cat 'bengal' called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Cat 'bengal' called
+destructor of Animal 'Animal' called
+destructor of Cat 'bengal' called
+destructor of Animal 'Animal' called

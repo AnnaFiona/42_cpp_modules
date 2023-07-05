@@ -30,7 +30,7 @@ void	compare(const char *test, const std::string my_output, const std::string ri
 	if (last == 'y')
 		std::cout << std::endl;
 }
-void	compare(std::streambuf *filebuf,std::streambuf *coutbuf , \
+void	compare(std::streambuf *filebuf, std::streambuf *coutbuf, \
 				const char *test, const int my_output, const int right_output, const char last)
 {
 	std::cout.rdbuf(coutbuf);
@@ -48,7 +48,7 @@ void	compare(std::streambuf *filebuf,std::streambuf *coutbuf , \
 		std::cout << std::endl;
 	std::cout.rdbuf(filebuf);
 }
-void	compare(std::streambuf *filebuf,std::streambuf *coutbuf , \
+void	compare(std::streambuf *filebuf, std::streambuf *coutbuf, \
 				const char *test, const std::string my_output, const std::string right_output, const char last)
 {
 	std::cout.rdbuf(coutbuf);

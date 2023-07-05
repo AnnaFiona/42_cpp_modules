@@ -1,19 +1,18 @@
 #pragma once
 
-#include <iostream>
-#include <string>
+#include "Animal.hpp"
 
-class Animal
+class Cat: public Animal
 {
-protected:
-	std::string type;
+private:
+	std::string	type;
 
 public:
 //con- and destructors
-	Animal();
-	Animal(Animal &C);
-	Animal	&operator = (Animal &C);
-	~Animal();
+	Cat();
+	Cat(Cat &C);
+	Cat	&operator = (Cat &C);
+	~Cat();
 
 //getter
 	std::string	getType(void) const;
