@@ -16,6 +16,7 @@ SRC =	../Animal.cpp \
 		compare_functions.cpp \
 		test_utils.cpp \
 		tests.cpp \
+		MixedTests.cpp \
 		WrongAnimalTests.cpp \
 		WrongCatTests.cpp
 

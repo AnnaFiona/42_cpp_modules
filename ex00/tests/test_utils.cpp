@@ -19,6 +19,7 @@ std::string	get_file_content(const char *right_output_file)
 	if (!infile.is_open())
 	{
 		std::cerr << "Error: file '" << right_output_file << "' could not be opened" << std::endl;
+		infile.close();
 		std::exit (1);
 	}
 	while (getline(infile, buf))

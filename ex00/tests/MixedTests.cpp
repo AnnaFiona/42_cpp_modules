@@ -5,21 +5,27 @@
 
 void	mixed_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf)
 {
-	Animal	cow;
-	Animal	animal;
-	Animal	cowCopy(cow);
+	const WrongAnimal	*wcat = new WrongCat();
+	const Animal		*animal = new Animal();
+	const Animal		*cat = new Cat();
+	const Animal		*dog = new Dog();
 
-	cow.setType("Cow");
-	compare(filebuf, coutbuf, "setter:", cow.getType(), "Cow", 'y');
-	compare(filebuf, coutbuf, "getter:", cow.getType(), "Cow", 'n');
-	compare(filebuf, coutbuf, NULL, cowCopy.getType(), "Animal", 'n');
-	compare(filebuf, coutbuf, NULL, animal.getType(), "Animal", 'n');
-	cow.makeSound();
-	animal.makeSound();
-	cowCopy.makeSound();
-	animal = cow;
-	compare(filebuf, coutbuf, NULL, animal.getType(), "Cow", 'y');
+	compare(filebuf, coutbuf, "(pointer)type:", wcat->getType(), "WrongAnimal", 'n');
+	compare(filebuf, coutbuf, NULL, animal->getType(), "Animal", 'n');
+	compare(filebuf, coutbuf, NULL, cat->getType(), "Animal", 'n');
+	compare(filebuf, coutbuf, NULL, dog->getType(), "Animal", 'y');
+	wcat->makeSound();
+	animal->makeSound();
+	cat->makeSound();
+	dog->makeSound();
+	cat->Animal::makeSound();
+
+	delete dog;
+	delete cat;
+	delete animal;
+	delete wcat;
 }
+
 
 void    mixed_tests()
 {

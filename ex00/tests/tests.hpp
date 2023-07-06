@@ -19,6 +19,10 @@ void	cat_tests();
 void	dog_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf);
 void	dog_tests();
 
+//MixedTests.cpp
+void	mixed_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf);
+void	mixed_tests();
+
 //WrongAnimalTests.cpp
 void	wrong_animal_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf);
 void	wrong_animal_tests();

@@ -7,5 +7,7 @@ int main()
 	dog_tests();
 	wrong_animal_tests();
 	wrong_cat_tests();
+	mixed_tests();
+	std::cout << "finished" << std::endl;
 	return (0);
 }
