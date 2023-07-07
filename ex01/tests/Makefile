@@ -1,11 +1,12 @@
 NAME = tests
 
-DEP = tests.hpp ../Animal.hpp ../Cat.hpp ../Dog.hpp ../WrongAnimal.hpp ../WrongCat.hpp
+DEP = tests.hpp ../Animal.hpp ../Brain.cpp ../Cat.hpp ../Dog.hpp ../WrongAnimal.hpp ../WrongCat.hpp
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	../Animal.cpp \
+		../Brain.cpp \
 		../Cat.cpp \
 		../Dog.cpp \
 		../WrongAnimal.cpp \

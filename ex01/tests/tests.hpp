@@ -2,11 +2,11 @@
 
 # include <iostream>
 # include <fstream>
+# include <cstdlib> //allowed?
 # include <string>
-# include <stdlib.h> // allowed?
 
 
-///////testfiles//////////////////////////////////////777
+///////testfiles///////////////////////////////////////////
 //AnimalTests.cpp
 void	animal_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf);
 void	animal_tests();
@@ -31,7 +31,7 @@ void	wrong_animal_tests();
 void	wrong_cat_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf);
 void	wrong_cat_tests();
 
-////////////other functions///////////////////////////7777
+////////////other functions////////////////////////////////
 //compare_functions.cpp
 void		compare(const char *test, const int my_output, const int right_output, const char last);
 void		compare(const char *test, const std::string my_output, const std::string right_output, const char last);

@@ -4,6 +4,7 @@ CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	Animal.cpp \
+		Brain.cpp \
 		Cat.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \
@@ -14,7 +15,7 @@ OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
 
-DEP = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+DEP = Animal.hpp Brain.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
 
 .PHONY: clean fclean all
 

@@ -2,8 +2,8 @@
 
 # include <iostream>
 # include <fstream>
+# include <cstdlib> //allowed?
 # include <string>
-# include <stdlib.h> // allowed?
 
 
 ///////testfiles//////////////////////////////////////777
