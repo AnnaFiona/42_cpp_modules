@@ -1,0 +1,11 @@
+default-constructor of Animal 'Animal' called
+default-constructor of Animal 'Animal' called
+copy assignment operator of Animal 'Animal' called
+copy-constructor of Animal 'Animal' called
+...
+...
+...
+copy assignment operator of Animal 'Cow' called
+destructor of Animal 'Animal' called
+destructor of Animal 'Cow' called
+destructor of Animal 'Cow' called
