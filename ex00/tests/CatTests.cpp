@@ -23,6 +23,6 @@ void	cat_tests()
 {
 	std::cout << "///Cat-Class tests///" << std::endl;
 	constructor_tests_framework(&cat_constructor_tests, "my_output/cat.txt", \
-									"right_output/cat.txt", "class messages");
+									"right_output/cat.txt", "messages:");
 	std::cout << std::endl;
 }

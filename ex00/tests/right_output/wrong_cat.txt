@@ -6,9 +6,9 @@ copy assignment operator of WrongAnimal 'WrongAnimal' called
 copy-constructor of WrongAnimal 'WrongAnimal' called
 copy assignment operator of WrongCat 'WrongCat' called
 copy-constructor of WrongCat 'WrongCat' called
-Miau
-Miau
-Miau
+Meow
+Meow
+Meow
 copy assignment operator of WrongCat 'bengal' called
 destructor of WrongCat 'WrongCat' called
 destructor of WrongAnimal 'WrongAnimal' called

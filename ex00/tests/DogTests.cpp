@@ -23,6 +23,6 @@ void	dog_tests()
 {
 	std::cout << "///Dog-Class tests///" << std::endl;
 	constructor_tests_framework(&dog_constructor_tests, "my_output/dog.txt", \
-									"right_output/dog.txt", "class messages");
+									"right_output/dog.txt", "messages:");
 	std::cout << std::endl;
 }

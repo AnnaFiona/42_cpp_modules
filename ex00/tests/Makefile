@@ -36,7 +36,7 @@ $(OBJDIR):
 
 $(NAME): $(OBJDIR) $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-	valgrind ./$(NAME)
+	valgrind --leak-check=full ./$(NAME)
 
 clean:
 	@rm -rf $(OBJDIR) *.o *.d

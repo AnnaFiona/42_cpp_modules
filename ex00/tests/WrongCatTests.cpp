@@ -23,6 +23,6 @@ void	wrong_cat_tests()
 {
 	std::cout << "///WrongCat-Class tests///" << std::endl;
 	constructor_tests_framework(&wrong_cat_constructor_tests, "my_output/wrong_cat.txt", \
-									"right_output/wrong_cat.txt", "class messages");
+									"right_output/wrong_cat.txt", "messages:");
 	std::cout << std::endl;
 }

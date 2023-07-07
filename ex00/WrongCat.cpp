@@ -36,5 +36,5 @@ void	WrongCat::setType(std::string type)
 //member-function
 void	WrongCat::makeSound() const
 {
-	std::cout << "Miau" << std::endl;
+	std::cout << "Meow" << std::endl;
 }

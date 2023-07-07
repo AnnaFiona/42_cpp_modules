@@ -4,7 +4,7 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
-/* int main()
+int main()
 {
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
@@ -16,10 +16,14 @@
 	j->makeSound();
 	meta->makeSound();
 
-	return 0;
-} */
+	delete i;
+	delete j;
+	delete meta;
 
-int main()
+	return 0;
+}
+
+/* int main()
 {
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
@@ -31,5 +35,9 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
+	delete i;
+	delete j;
+	delete meta;
+
 	return 0;
-}
+} */

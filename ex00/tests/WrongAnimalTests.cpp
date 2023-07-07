@@ -23,6 +23,6 @@ void	wrong_animal_tests()
 {
 	std::cout << "///WrongWrongAnimal-Class tests///" << std::endl;
 	constructor_tests_framework(&wrong_animal_constructor_tests, "my_output/wrong_animal.txt", \
-									"right_output/wrong_animal.txt", "class messages");
+									"right_output/wrong_animal.txt", "messages:");
 	std::cout << std::endl;
 }

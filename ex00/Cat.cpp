@@ -36,5 +36,5 @@ void	Cat::setType(std::string type)
 //member-function
 void	Cat::makeSound() const
 {
-	std::cout << "Miau" << std::endl;
+	std::cout << "Meow" << std::endl;
 }

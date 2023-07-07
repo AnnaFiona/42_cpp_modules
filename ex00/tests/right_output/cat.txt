@@ -6,9 +6,9 @@ copy assignment operator of Animal 'Animal' called
 copy-constructor of Animal 'Animal' called
 copy assignment operator of Cat 'Cat' called
 copy-constructor of Cat 'Cat' called
-Miau
-Miau
-Miau
+Meow
+Meow
+Meow
 copy assignment operator of Cat 'bengal' called
 destructor of Cat 'Cat' called
 destructor of Animal 'Animal' called
