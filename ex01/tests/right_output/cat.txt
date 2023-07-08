@@ -1,18 +1,43 @@
 default-constructor of Animal 'Animal' called
+default-constructor of Brain called
 default-constructor of Cat 'Cat' called
 default-constructor of Animal 'Animal' called
+default-constructor of Brain called
 default-constructor of Cat 'Cat' called
 copy assignment operator of Animal 'Animal' called
 copy-constructor of Animal 'Animal' called
+default-constructor of Brain called
+destructor of Brain called
+default-constructor of Brain called
 copy assignment operator of Cat 'Cat' called
 copy-constructor of Cat 'Cat' called
 Meow
 Meow
 Meow
+destructor of Brain called
+default-constructor of Brain called
 copy assignment operator of Cat 'bengal' called
-destructor of Cat 'Cat' called
-destructor of Animal 'Animal' called
+default-constructor of Brain called
+destructor of Brain called
+destructor of Brain called
+default-constructor of Brain called
+copy assignment operator of Cat 'bengal' called
+copy assignment operator of Animal 'Animal' called
+copy-constructor of Animal 'Animal' called
+default-constructor of Brain called
+destructor of Brain called
+default-constructor of Brain called
+copy assignment operator of Cat 'bengal' called
+copy-constructor of Cat 'bengal' called
+destructor of Brain called
 destructor of Cat 'bengal' called
 destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'bengal' called
+destructor of Animal 'Animal' called
+destructor of Brain called
 destructor of Cat 'bengal' called
 destructor of Animal 'Animal' called

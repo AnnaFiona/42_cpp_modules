@@ -1,18 +1,43 @@
 default-constructor of Animal 'Animal' called
+default-constructor of Brain called
 default-constructor of Dog 'Dog' called
 default-constructor of Animal 'Animal' called
+default-constructor of Brain called
 default-constructor of Dog 'Dog' called
 copy assignment operator of Animal 'Animal' called
 copy-constructor of Animal 'Animal' called
+default-constructor of Brain called
+destructor of Brain called
+default-constructor of Brain called
 copy assignment operator of Dog 'Dog' called
 copy-constructor of Dog 'Dog' called
 Bark
 Bark
 Bark
+destructor of Brain called
+default-constructor of Brain called
 copy assignment operator of Dog 'beagle' called
-destructor of Dog 'Dog' called
-destructor of Animal 'Animal' called
+default-constructor of Brain called
+destructor of Brain called
+destructor of Brain called
+default-constructor of Brain called
+copy assignment operator of Dog 'beagle' called
+copy assignment operator of Animal 'Animal' called
+copy-constructor of Animal 'Animal' called
+default-constructor of Brain called
+destructor of Brain called
+default-constructor of Brain called
+copy assignment operator of Dog 'beagle' called
+copy-constructor of Dog 'beagle' called
+destructor of Brain called
 destructor of Dog 'beagle' called
 destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'beagle' called
+destructor of Animal 'Animal' called
+destructor of Brain called
 destructor of Dog 'beagle' called
 destructor of Animal 'Animal' called

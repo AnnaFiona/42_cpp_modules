@@ -5,6 +5,7 @@
 
 void	mixed_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf)
 {
+	//ex00:
 	const WrongAnimal	*wcat = new WrongCat();
 	const Animal		*animal = new Animal();
 	const Animal		*cat = new Cat();
@@ -24,6 +25,25 @@ void	mixed_constructor_tests(std::streambuf *filebuf, std::streambuf *coutbuf)
 	delete cat;
 	delete animal;
 	delete wcat;
+
+	//ex01:
+	Animal	**animals = new Animal*[10];
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+
+	for (int x = 0; x < 5; x++)
+		animals[x] = new Dog;
+	for (int x = 5; x < 10; x++)
+		animals[x] = new Cat;
+
+	for (int x = 0; x < 10; x++)
+		animals[x]->makeSound();
+		
+	delete i;
+	delete j;//should not create a leak
+	for (int x = 0; x < 10; x++)
+		delete animals[x];
+	delete [] animals;
 }
 
 
