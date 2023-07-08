@@ -1,0 +1,18 @@
+default-constructor of WrongAnimal 'WrongAnimal' called
+default-constructor of WrongCat 'WrongCat' called
+default-constructor of WrongAnimal 'WrongAnimal' called
+default-constructor of WrongCat 'WrongCat' called
+copy assignment operator of WrongAnimal 'WrongAnimal' called
+copy-constructor of WrongAnimal 'WrongAnimal' called
+copy assignment operator of WrongCat 'WrongCat' called
+copy-constructor of WrongCat 'WrongCat' called
+Meow
+Meow
+Meow
+copy assignment operator of WrongCat 'bengal' called
+destructor of WrongCat 'WrongCat' called
+destructor of WrongAnimal 'WrongAnimal' called
+destructor of WrongCat 'bengal' called
+destructor of WrongAnimal 'WrongAnimal' called
+destructor of WrongCat 'bengal' called
+destructor of WrongAnimal 'WrongAnimal' called

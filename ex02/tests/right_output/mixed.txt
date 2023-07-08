@@ -1,0 +1,102 @@
+default-constructor of WrongAnimal 'WrongAnimal' called
+default-constructor of WrongCat 'WrongCat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+...
+Meow
+Bark
+...
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of WrongCat 'WrongCat' called
+destructor of WrongAnimal 'WrongAnimal' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Dog 'Dog' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+default-constructor of Animal 'Animal' called
+default-constructor of Brain called
+default-constructor of Cat 'Cat' called
+Bark
+Bark
+Bark
+Bark
+Bark
+Meow
+Meow
+Meow
+Meow
+Meow
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Dog 'Dog' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
+destructor of Brain called
+destructor of Cat 'Cat' called
+destructor of Animal 'Animal' called
