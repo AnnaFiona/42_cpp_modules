@@ -21,5 +21,5 @@ public:
 	void	setType(std::string type);
 
 //member-function
-	virtual void	makeSound() const;
+	virtual void	makeSound() const = 0;
 };
