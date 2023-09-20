@@ -1,5 +1,7 @@
 #pragma once
 
+#include <exception>
+#include <iostream>
 #include <string>
 
 class Form
@@ -29,6 +31,8 @@ public:
 	int			getRequiredGradeSign() const;
 	bool		getSigned() const;
 
+//member-functions
+	void	beSigned(const Bureaucrat& B);
 
 //classes
 	class GradeTooHighException : public std::exception
@@ -45,4 +49,4 @@ public:
 
 
 //<<-operator overload function//////////////////////////////////
-std::ostream& operator << (std::ostream &out, const Bureaucrat &B);
+std::ostream& operator << (std::ostream &out, const Form &F);

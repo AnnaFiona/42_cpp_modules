@@ -1,25 +1,41 @@
+#include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 //private member-functions
+void	Form::_checkGrade() const
+{
+	if (this->_required_grade_execute < 1 || this->_required_grade_sign < 1)
+	{
+		throw (Form::GradeTooHighException());
+	}
+	if (this->_required_grade_execute > 150 || this->_required_grade_sign > 150)
+	{
+		throw (Form::GradeTooLowException());
+	}
+}
 
 
 //con- and destructor
-Form::Form() : _name("Form"), _required_grade_execute(), _required_grade_sign(required_grade_sign)
+Form::Form() : _name("Form"), _required_grade_execute(42), _required_grade_sign(42)
 {
 	this->_signed = false;
+	this->_checkGrade();
 }
 Form::Form(const std::string name, const int required_grade_execute, const int required_grade_sign) : \
 		_name(name), _required_grade_execute(required_grade_execute), _required_grade_sign(required_grade_sign)
 {
 	this->_signed = false;
+	this->_checkGrade();
 }
 Form::Form(Form& F)
 {
 	*(this) = F;
+	this->_checkGrade();
 }
 Form& Form::operator = (Form& F)
 {
 	this->_signed = F.getSigned();
+	this->_checkGrade();
 	return (*this);
 }
 Form::~Form(){}
@@ -42,6 +58,14 @@ bool		Form::getSigned() const
 	return (this->_signed);
 }
 
+//member-functions
+void	Form::beSigned(const Bureaucrat& B)
+{
+	if (B.getGrade() <= this->getRequiredGradeSign())
+		this->_signed = true;
+	else
+		throw (Form::GradeTooLowException());
+}
 
 //classes
 const char *Form::GradeTooHighException::what() const throw()
@@ -52,6 +76,7 @@ const char *Form::GradeTooLowException::what() const throw()
 {
 	return ("Error: Grade too low\n");
 }
+
 
 
 //<<-operator overload function//////////////////////////////////

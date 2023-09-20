@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 //private member-functions
 void	Bureaucrat::_checkGrade() const
@@ -57,6 +58,17 @@ void	Bureaucrat::decrementGrade()
 {
 	this->_grade++;
 	this->_checkGrade();
+}
+void	Bureaucrat::signForm(Form &F)
+{
+	try {
+		F.beSigned(*this);
+	} catch (std::exception& e) {
+		std::cout << this->getName() << " couldn’t sign " << F.getName() << " because ";
+		e.what();
+		return ;
+	}
+	std::cout << this->getName() << " signed " << F.getName();
 }
 
 //classes

@@ -29,6 +29,7 @@ public:
 //member-functions
 	void	incrementGrade();
 	void	decrementGrade();
+	void	signForm(Form &F);
 
 //classes
 	class GradeTooHighException : public std::exception
