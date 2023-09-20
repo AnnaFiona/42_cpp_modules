@@ -16,7 +16,10 @@ private:
 
 public:
 //con- and destructor
+	Bureaucrat();
 	Bureaucrat(const std::string name, const int grade);
+	Bureaucrat(Bureaucrat& B);
+	Bureaucrat& operator = (Bureaucrat& B);
 	~Bureaucrat();
 
 //getters

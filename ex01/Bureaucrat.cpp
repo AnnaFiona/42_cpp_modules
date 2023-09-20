@@ -15,10 +15,25 @@ void	Bureaucrat::_checkGrade() const
 
 
 //con- and destructor
+Bureaucrat::Bureaucrat() : _name("Bureaucrat")
+{
+	this->_grade = 150;
+}
 Bureaucrat::Bureaucrat(const std::string name, const int grade) : _name(name)
 {
 	this->_grade = grade;
 	this->_checkGrade();
+}
+Bureaucrat::Bureaucrat(Bureaucrat& B)
+{
+	*(this) = B;
+	this->_checkGrade();
+}
+Bureaucrat& Bureaucrat::operator = (Bureaucrat& B)
+{
+	this->_grade = B.getGrade();
+	this->_checkGrade();
+	return (*this);
 }
 Bureaucrat::~Bureaucrat(){}
 
@@ -54,11 +69,13 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Error: Grade too low\n");
 }
 
+
+
 //<<-operator overload function//////////////////////////////////
 std::ostream& operator << (std::ostream &out, const Bureaucrat &B)
 {
 	out << B.getName();
-	out << ", bureaucrat grade ";
+	out << ", bureaucrat grade: ";
 	out << B.getGrade();
 	return (out);
 }
