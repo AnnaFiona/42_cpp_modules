@@ -1,6 +1,73 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+static void constructor_tests()
+{
+	try {
+		Form grade_e_too_high("grade_e_too_high", 0, 150);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	try {
+		Form grade_e_too_low("grade_e_too_low", 151, 1);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	std::cout << std::endl;
+
+	try {
+		Form grade_s_too_high("grade_s_too_high", 150, 0);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	try {
+		Form grade_s_too_low("grade_s_too_low", 1, 151);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	std::cout << "-----------------------------------------------------" << std::endl;
+}
+
+void	sign_tests()
+{
+	Bureaucrat	bureaucrat("bureaucrat", 43);
+	Form		form;
+
+	try {
+		bureaucrat.signForm(form);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	std::cout << form << std::endl;
+	bureaucrat.incrementGrade();
+	try {
+		bureaucrat.signForm(form);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	std::cout << form << std::endl;
+	std::cout << "-----------------------------------------------------" << std::endl;
+}
 
 int main()
+{
+	constructor_tests();
+	sign_tests();
+
+	Form	default_constr;
+	Form	copy(default_constr);
+	Form	assignment_constr("assigned", 50, 100);
+	Bureaucrat	b("b", 2);
+
+	std::cout << "default-constructor:	" << default_constr << std::endl;
+	std::cout << "copy-constructor:	" << copy << std::endl;
+	std::cout << "assignment-constructor:	" << assignment_constr << std::endl;
+	copy = assignment_constr;
+	std::cout << "copy-constructor:	" << copy << std::endl;
+
+
+}
+
+/* int main()
 {
 	Bureaucrat decrement_too_low("decrement_too_low", 150);
 	std::cout << decrement_too_low << std::endl;
@@ -36,4 +103,4 @@ int main()
 		std::cout << e.what();
 	}
 	std::cout << std::endl << std::endl;
-}
+} */

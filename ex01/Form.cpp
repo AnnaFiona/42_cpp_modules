@@ -19,7 +19,6 @@ void	Form::_checkGrade() const
 Form::Form() : _name("Form"), _required_grade_execute(42), _required_grade_sign(42)
 {
 	this->_signed = false;
-	this->_checkGrade();
 }
 Form::Form(const std::string name, const int required_grade_execute, const int required_grade_sign) : \
 		_name(name), _required_grade_execute(required_grade_execute), _required_grade_sign(required_grade_sign)
@@ -27,7 +26,8 @@ Form::Form(const std::string name, const int required_grade_execute, const int r
 	this->_signed = false;
 	this->_checkGrade();
 }
-Form::Form(Form& F)
+Form::Form(Form& F) : _name(F._name), _required_grade_execute(F._required_grade_execute), \
+						_required_grade_sign(F._required_grade_sign)
 {
 	*(this) = F;
 	this->_checkGrade();
@@ -70,11 +70,11 @@ void	Form::beSigned(const Bureaucrat& B)
 //classes
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("Error: Grade too high\n");
+	return ("Grade too high\n");
 }
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("Error: Grade too low\n");
+	return ("Grade too low\n");
 }
 
 

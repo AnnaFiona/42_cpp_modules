@@ -1,9 +1,9 @@
-NAME = bureaucrat
+NAME = form
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =	Bureaucrat.cpp Form.cpp main.cpp
+SRC = Form.cpp Bureaucrat.cpp main.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)

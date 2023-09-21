@@ -1,8 +1,11 @@
 #pragma once
   
+#include "Form.hpp"
 #include <exception>
 #include <iostream>
 #include <string>
+
+class Form;
 
 class Bureaucrat
 {
