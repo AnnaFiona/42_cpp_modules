@@ -53,18 +53,22 @@ int main()
 	constructor_tests();
 	sign_tests();
 
-	Form	default_constr;
-	Form	copy(default_constr);
-	Form	assignment_constr("assigned", 50, 100);
 	Bureaucrat	b("b", 2);
+	Form		default_constr;
+	Form		copy(default_constr);
+	Form		assignment_constr("assigned", 50, 100);
 
 	std::cout << "default-constructor:	" << default_constr << std::endl;
 	std::cout << "copy-constructor:	" << copy << std::endl;
 	std::cout << "assignment-constructor:	" << assignment_constr << std::endl;
+	try {
+		b.signForm(assignment_constr);
+	} catch (std::exception& e) {
+		std::cout << e.what();
+	}
+	std::cout << "assignment-constructor:	" << assignment_constr << std::endl;
 	copy = assignment_constr;
 	std::cout << "copy-constructor:	" << copy << std::endl;
-
-
 }
 
 /* int main()
