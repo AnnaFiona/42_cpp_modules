@@ -3,13 +3,22 @@ NAME = form
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = AForm.cpp Bureaucrat.cpp main.cpp RobotomyRequestForm.cpp
+SRC =	AForm.cpp \
+		Bureaucrat.cpp \
+		main.cpp \
+		PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
 
-DEP = AForm.hpp Bureaucrat.hpp RobotomyRequestForm.hpp
+DEP =	AForm.hpp \
+		Bureaucrat.hpp \
+		PresidentialPardonForm.hpp \
+		RobotomyRequestForm.hpp \
+		ShrubberyCreationForm.hpp
 
 .PHONY: clean fclean all
 
