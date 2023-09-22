@@ -24,8 +24,8 @@ public:
 	Form();
 	Form(const std::string name, const int required_grade_execute, \
 			const int required_grade_sign);
-	Form(Form& F);
-	Form& operator = (Form& F);
+	Form(const Form& F);
+	Form& operator = (const Form& F);
 	~Form();
 
 //getters

@@ -25,12 +25,12 @@ Bureaucrat::Bureaucrat(const std::string name, const int grade) : _name(name)
 	this->_grade = grade;
 	this->_checkGrade();
 }
-Bureaucrat::Bureaucrat(Bureaucrat& B)
+Bureaucrat::Bureaucrat(const Bureaucrat& B)
 {
 	*(this) = B;
 	this->_checkGrade();
 }
-Bureaucrat& Bureaucrat::operator = (Bureaucrat& B)
+Bureaucrat& Bureaucrat::operator = (const Bureaucrat& B)
 {
 	this->_grade = B.getGrade();
 	this->_checkGrade();

@@ -21,8 +21,8 @@ public:
 //con- and destructor
 	Bureaucrat();
 	Bureaucrat(const std::string name, const int grade);
-	Bureaucrat(Bureaucrat& B);
-	Bureaucrat& operator = (Bureaucrat& B);
+	Bureaucrat(const Bureaucrat& B);
+	Bureaucrat& operator = (const Bureaucrat& B);
 	~Bureaucrat();
 
 //getters

@@ -1,34 +1,41 @@
 #pragma once
-  
+
+#include "Bureaucrat.hpp"
 #include <exception>
 #include <iostream>
 #include <string>
 
-class Bureaucrat
+class Bureaucrat;
+
+class AForm
 {
 private:
 	const std::string	_name;
-	int					_grade;
-	
+	const int			_required_grade_execute;
+	const int			_required_grade_sign;
+	bool				_signed;
+
 //member-functions
 	void	_checkGrade() const;
 
 
 public:
 //con- and destructor
-	Bureaucrat();
-	Bureaucrat(const std::string name, const int grade);
-	Bureaucrat(const Bureaucrat& B);
-	Bureaucrat& operator = (const Bureaucrat& B);
-	~Bureaucrat();
+	AForm();
+	AForm(const std::string name, const int required_grade_execute, \
+			const int required_grade_sign);
+	AForm(const AForm& F);
+	AForm& operator = (const AForm& F);
+	~AForm();
 
 //getters
 	std::string	getName() const;
-	int			getGrade() const;
+	int			getRequiredGradeExecute() const;
+	int			getRequiredGradeSign() const;
+	bool		getSigned() const;
 
 //member-functions
-	void	incrementGrade();
-	void	decrementGrade();
+	virtual void	beSigned(const Bureaucrat& B) = 0;
 
 //classes
 	class GradeTooHighException : public std::exception
@@ -45,4 +52,4 @@ public:
 
 
 //<<-operator overload function//////////////////////////////////
-std::ostream& operator << (std::ostream &out, const Bureaucrat &B);
+std::ostream& operator << (std::ostream &out, const AForm &F);

@@ -1,8 +1,11 @@
 #pragma once
   
+#include "AForm.hpp"
 #include <exception>
 #include <iostream>
 #include <string>
+
+class Form;
 
 class Bureaucrat
 {
@@ -29,6 +32,7 @@ public:
 //member-functions
 	void	incrementGrade();
 	void	decrementGrade();
+	void	signForm(AForm &F);
 
 //classes
 	class GradeTooHighException : public std::exception
