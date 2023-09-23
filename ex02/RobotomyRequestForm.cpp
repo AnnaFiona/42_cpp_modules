@@ -1,4 +1,27 @@
 #include "RobotomyRequestForm.hpp"
+#include <sys/time.h>
+
+//private member-function
+void	RobotomyRequestForm::action() const
+{
+
+	struct timeval time;
+    gettimeofday(&time, NULL);
+	int	num = time.tv_usec % 2;
+
+	std::cout << "Bzzz clACk Clak" << std::endl;
+
+	switch (num)
+	{
+		case 0:
+			std::cout << this->getTarget() << " has been robotomized successfully" <<std::endl;
+			break;
+		case 1:
+			std::cout << "The robotomy has failed" <<std::endl;
+			break;
+	}
+}
+
 
 //con- and destructors
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
@@ -17,6 +40,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator = (const RobotomyRequestForm&
 {
 	AForm::operator=(R);
 	this->_target = R._target;
+	return (*this);
 }
 RobotomyRequestForm::~RobotomyRequestForm() {}
 

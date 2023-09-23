@@ -17,6 +17,8 @@ private:
 
 //member-functions
 	void	_checkGrade() const;
+//pure virtual member-function
+	virtual void	action() const = 0;
 
 
 public:
@@ -35,7 +37,8 @@ public:
 	bool		getSigned() const;
 
 //member-functions
-	virtual void	beSigned(const Bureaucrat& B) = 0;
+	void	execute(Bureaucrat const& executor) const;
+	void	beSigned(const Bureaucrat& B);
 
 //classes
 	class GradeTooHighException : public std::exception
@@ -44,6 +47,11 @@ public:
 		virtual const char *what() const throw();
 	};
 	class GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
+	class FormNotSigned : public std::exception
 	{
 	public:
 		virtual const char *what() const throw();

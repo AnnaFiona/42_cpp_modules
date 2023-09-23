@@ -1,5 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
+//private member-function
+void	PresidentialPardonForm::action() const
+{
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+}
+
+
 //con- and destructors
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5)
 {
@@ -17,6 +24,7 @@ PresidentialPardonForm& PresidentialPardonForm::operator = (const PresidentialPa
 {
 	AForm::operator=(P);
 	this->_target = P._target;
+	return (*this);
 }
 PresidentialPardonForm::~PresidentialPardonForm() {}
 

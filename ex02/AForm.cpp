@@ -59,6 +59,14 @@ bool		AForm::getSigned() const
 }
 
 //member-functions
+void	AForm::execute(Bureaucrat const& executor) const
+{
+	if (this->getSigned() == false)
+		throw (AForm::FormNotSigned());
+	if (executor.getGrade() > this->getRequiredGradeExecute())
+		throw (AForm::GradeTooLowException());
+	this->action();
+}
 void	AForm::beSigned(const Bureaucrat& B)
 {
 	if (B.getGrade() <= this->getRequiredGradeSign())
@@ -76,6 +84,10 @@ const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low\n");
 }
+const char *AForm::FormNotSigned::what() const throw()
+{
+	return ("Form is not signed\n");
+}
 
 
 
@@ -83,7 +95,10 @@ const char *AForm::GradeTooLowException::what() const throw()
 std::ostream& operator << (std::ostream &out, const AForm &F)
 {
 	out << F.getName();
-	out << ", aform signed: " << F.getSigned();
+	if (F.getSigned() == true)
+		out << ", is signed";
+	else
+		out << ", is unsigned";
 	out << ", required grade to sign: " << F.getRequiredGradeSign();
 	out << ", required grade to execute: " << F.getRequiredGradeExecute();
 	return (out);

@@ -11,6 +11,9 @@ class PresidentialPardonForm : public AForm
 private:
 	std::string	_target;
 
+//member-function
+	void	action() const ;
+
 public:
 //con- and destructors
 	PresidentialPardonForm();
@@ -21,4 +24,5 @@ public:
 
 //getter
 	std::string	getTarget() const;
+
 };

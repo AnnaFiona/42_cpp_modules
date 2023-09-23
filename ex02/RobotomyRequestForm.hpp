@@ -11,6 +11,9 @@ class RobotomyRequestForm : public AForm
 private:
 	std::string	_target;
 
+//member-function
+	void	action() const ;
+
 public:
 //con- and destructors
 	RobotomyRequestForm();

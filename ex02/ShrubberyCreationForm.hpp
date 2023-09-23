@@ -11,6 +11,9 @@ class ShrubberyCreationForm : public AForm
 private:
 	std::string	_target;
 
+//member-function
+	void	action() const ;
+
 public:
 //con- and destructors
 	ShrubberyCreationForm();
@@ -21,4 +24,11 @@ public:
 
 //getter
 	std::string	getTarget() const;
+
+//classes
+	class ShrubberyCouldNotBeCreated : public std::exception
+	{
+	public:
+		virtual const char *what() const throw();
+	};
 };
