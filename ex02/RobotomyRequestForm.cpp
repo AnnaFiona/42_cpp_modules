@@ -6,9 +6,9 @@ void	RobotomyRequestForm::action() const
 {
 
 	struct timeval time;
-    gettimeofday(&time, NULL);
-	int	num = time.tv_usec % 2;
-
+    int	num = gettimeofday(&time, NULL);
+	if (num == 0)
+		num = time.tv_usec % 2;
 	std::cout << "Bzzz clACk Clak" << std::endl;
 
 	switch (num)
@@ -19,16 +19,19 @@ void	RobotomyRequestForm::action() const
 		case 1:
 			std::cout << "The robotomy has failed" <<std::endl;
 			break;
+		case -1:
+			std::cout << "The robotomy has failed" <<std::endl;
+			break;
 	}
 }
 
 
 //con- and destructors
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 45, 72)
 {
 	this->_target = "target";
 }
-RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RobotomyRequestForm", 45, 72)
 {
 	this->_target = target;
 }

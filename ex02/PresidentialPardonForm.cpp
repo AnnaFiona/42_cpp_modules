@@ -8,11 +8,11 @@ void	PresidentialPardonForm::action() const
 
 
 //con- and destructors
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 5, 25)
 {
 	this->_target = "target";
 }
-PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("PresidentialPardonForm", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("PresidentialPardonForm", 5, 25)
 {
 	this->_target = target;
 }

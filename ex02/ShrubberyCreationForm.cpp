@@ -10,7 +10,7 @@ void	ShrubberyCreationForm::action() const
 
 	file_name = this->getTarget() + "_shrubbery";
 	file.open(file_name.c_str());
-	if (file.is_open())
+	if (!file.is_open())
 		throw (ShrubberyCouldNotBeCreated());
 
 	file << "	         %%%,%%%%%%%\n";
@@ -28,11 +28,11 @@ void	ShrubberyCreationForm::action() const
 
 
 //con- and destructors
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 137, 145)
 {
 	this->_target = "target";
 }
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", 137, 145)
 {
 	this->_target = target;
 }
