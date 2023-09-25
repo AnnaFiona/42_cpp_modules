@@ -5,6 +5,7 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRC =	AForm.cpp \
 		Bureaucrat.cpp \
+		Intern.cpp \
 		main.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
@@ -16,6 +17,7 @@ OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
 
 DEP =	AForm.hpp \
 		Bureaucrat.hpp \
+		Intern.hpp \
 		PresidentialPardonForm.hpp \
 		RobotomyRequestForm.hpp \
 		ShrubberyCreationForm.hpp

@@ -14,5 +14,5 @@ public:
 	~Intern();
 
 //member-function
-	AForm*	makeForm(const std::string form_name, const std::string target);
+	AForm*	makeForm(const std::string form_name, const std::string target) const;
 };

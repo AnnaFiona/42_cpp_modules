@@ -28,7 +28,7 @@ public:
 			const int required_grade_sign);
 	AForm(const AForm& F);
 	AForm& operator = (const AForm& F);
-	~AForm();
+	virtual ~AForm();
 
 //getters
 	std::string	getName() const;
