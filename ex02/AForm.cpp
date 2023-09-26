@@ -1,20 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-//private member-functions
-void	AForm::_checkGrade() const
-{
-	if (this->_required_grade_execute < 1 || this->_required_grade_sign < 1)
-	{
-		throw (AForm::GradeTooHighException());
-	}
-	if (this->_required_grade_execute > 150 || this->_required_grade_sign > 150)
-	{
-		throw (AForm::GradeTooLowException());
-	}
-}
-
-
 //con- and destructor
 AForm::AForm() : _name("AForm"), _required_grade_execute(42), _required_grade_sign(42)
 {
@@ -23,19 +9,20 @@ AForm::AForm() : _name("AForm"), _required_grade_execute(42), _required_grade_si
 AForm::AForm(const std::string name, const int required_grade_execute, const int required_grade_sign) : \
 		_name(name), _required_grade_execute(required_grade_execute), _required_grade_sign(required_grade_sign)
 {
+	if (required_grade_execute < 1 || required_grade_sign < 1)
+		throw (AForm::GradeTooHighException());
+	if (required_grade_execute > 150 || required_grade_sign > 150)
+		throw (AForm::GradeTooLowException());
 	this->_signed = false;
-	this->_checkGrade();
 }
 AForm::AForm(const AForm& F) : _name(F._name), _required_grade_execute(F._required_grade_execute), \
 						_required_grade_sign(F._required_grade_sign)
 {
 	*(this) = F;
-	this->_checkGrade();
 }
 AForm& AForm::operator = (const AForm& F)
 {
 	this->_signed = F.getSigned();
-	this->_checkGrade();
 	return (*this);
 }
 AForm::~AForm(){}
@@ -96,9 +83,9 @@ std::ostream& operator << (std::ostream &out, const AForm &F)
 {
 	out << F.getName();
 	if (F.getSigned() == true)
-		out << ", is signed";
+		out << " is signed";
 	else
-		out << ", is unsigned";
+		out << " is unsigned";
 	out << ", required grade to sign: " << F.getRequiredGradeSign();
 	out << ", required grade to execute: " << F.getRequiredGradeExecute();
 	return (out);

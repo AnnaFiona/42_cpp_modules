@@ -15,16 +15,16 @@ void presidential_pardon_form_tests()
 	b_sign.incrementGrade();
 	ppf.beSigned(b_sign);
 	b_sign.decrementGrade();
-	std::cout << "target of ppf: " << ppf.getTarget() << std::endl;
-	std::cout << "target of p: " << copy.getTarget() << std::endl;
-	std::cout << "target of copy: " << copy.getTarget() << std::endl;
-	std::cout << copy << std::endl;
+	std::cout << "1: " << "target of ppf: " << ppf.getTarget() << std::endl;
+	std::cout << "2: " << "target of p: " << copy.getTarget() << std::endl;
+	std::cout << "3: " << "target of copy: " << copy.getTarget() << std::endl;
+	std::cout << "4: " << copy << std::endl;
 	copy = ppf;
-	std::cout << "target of copy: " << copy.getTarget() << std::endl;
-	std::cout << copy << std::endl;
+	std::cout << "5: " << "target of copy: " << copy.getTarget() << std::endl;
+	std::cout << "6: " << copy << std::endl;
 	std::cout << "-----------------------------------------------------" << std::endl;
 
-	std::cout << p << std::endl;
+	std::cout << "7: " << p << std::endl;
 	b_execute.executeForm(p);
 	b_sign.signForm(p);
 	b_sign.incrementGrade();
@@ -48,13 +48,13 @@ void robotomy_request_form_tests()
 	b_sign.incrementGrade();
 	rrf.beSigned(b_sign);
 	b_sign.decrementGrade();
-	std::cout << "target of rrf: " << rrf.getTarget() << std::endl;
-	std::cout << "target of r: " << copy.getTarget() << std::endl;
-	std::cout << "target of copy: " << copy.getTarget() << std::endl;
-	std::cout << copy << std::endl;
+	std::cout << "8: " << "target of rrf: " << rrf.getTarget() << std::endl;
+	std::cout << "9: " << "target of r: " << copy.getTarget() << std::endl;
+	std::cout << "10: " << "target of copy: " << copy.getTarget() << std::endl;
+	std::cout << "11: " << copy << std::endl;
 	copy = rrf;
-	std::cout << "target of copy: " << copy.getTarget() << std::endl;
-	std::cout << copy << std::endl;
+	std::cout << "12: " << "target of copy: " << copy.getTarget() << std::endl;
+	std::cout << "13: " << copy << std::endl;
 	std::cout << "-----------------------------------------------------" << std::endl;
 
 	std::cout << r << std::endl;
@@ -92,13 +92,13 @@ void shrubbery_creation_form_tests()
 	b_sign.incrementGrade();
 	scf.beSigned(b_sign);
 	b_sign.decrementGrade();
-	std::cout << "target of scf: " << scf.getTarget() << std::endl;
-	std::cout << "target of s: " << copy.getTarget() << std::endl;
-	std::cout << "target of copy: " << copy.getTarget() << std::endl;
-	std::cout << copy << std::endl;
+	std::cout << "14: " << "target of scf: " << scf.getTarget() << std::endl;
+	std::cout << "15: " << "target of s: " << copy.getTarget() << std::endl;
+	std::cout << "16: " << "target of copy: " << copy.getTarget() << std::endl;
+	std::cout << "17: " << copy << std::endl;
 	copy = scf;
-	std::cout << "target of copy: " << copy.getTarget() << std::endl;
-	std::cout << copy << std::endl;
+	std::cout << "18: " << "target of copy: " << copy.getTarget() << std::endl;
+	std::cout << "19: " << copy << std::endl;
 	std::cout << "-----------------------------------------------------" << std::endl;
 
 	std::cout << s << std::endl;

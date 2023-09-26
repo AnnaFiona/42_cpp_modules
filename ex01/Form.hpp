@@ -15,10 +15,6 @@ private:
 	const int			_required_grade_sign;
 	bool				_signed;
 
-//member-functions
-	void	_checkGrade() const;
-
-
 public:
 //con- and destructor
 	Form();

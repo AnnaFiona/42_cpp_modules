@@ -15,11 +15,8 @@ private:
 	const int			_required_grade_sign;
 	bool				_signed;
 
-//member-functions
-	void	_checkGrade() const;
 //pure virtual member-function
 	virtual void	action() const = 0;
-
 
 public:
 //con- and destructor
