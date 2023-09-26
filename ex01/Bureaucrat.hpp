@@ -1,5 +1,5 @@
 #pragma once
-  
+
 #include "Form.hpp"
 #include <exception>
 #include <iostream>
@@ -12,10 +12,6 @@ class Bureaucrat
 private:
 	const std::string	_name;
 	int					_grade;
-	
-//member-functions
-	void	_checkGrade() const;
-
 
 public:
 //con- and destructor
@@ -30,9 +26,9 @@ public:
 	int			getGrade() const;
 
 //member-functions
+	void	signForm(Form &F);
 	void	incrementGrade();
 	void	decrementGrade();
-	void	signForm(Form &F);
 
 //classes
 	class GradeTooHighException : public std::exception

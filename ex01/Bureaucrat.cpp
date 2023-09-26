@@ -1,20 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-//private member-functions
-void	Bureaucrat::_checkGrade() const
-{
-	if (this->_grade < 1)
-	{
-		throw (Bureaucrat::GradeTooHighException());
-	}
-	if (this->_grade > 150)
-	{
-		throw (Bureaucrat::GradeTooLowException());
-	}
-}
-
-
 //con- and destructor
 Bureaucrat::Bureaucrat() : _name("Bureaucrat")
 {
@@ -22,18 +8,19 @@ Bureaucrat::Bureaucrat() : _name("Bureaucrat")
 }
 Bureaucrat::Bureaucrat(const std::string name, const int grade) : _name(name)
 {
+	if (grade < 1)
+		throw (Bureaucrat::GradeTooHighException());
+	if (grade > 150)
+		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = grade;
-	this->_checkGrade();
 }
 Bureaucrat::Bureaucrat(const Bureaucrat& B)
 {
 	*(this) = B;
-	this->_checkGrade();
 }
 Bureaucrat& Bureaucrat::operator = (const Bureaucrat& B)
 {
 	this->_grade = B.getGrade();
-	this->_checkGrade();
 	return (*this);
 }
 Bureaucrat::~Bureaucrat(){}
@@ -49,16 +36,6 @@ int	Bureaucrat::getGrade() const
 }
 
 //member-functions
-void	Bureaucrat::incrementGrade()
-{
-	this->_grade--;
-	this->_checkGrade();
-}
-void	Bureaucrat::decrementGrade()
-{
-	this->_grade++;
-	this->_checkGrade();
-}
 void	Bureaucrat::signForm(Form &F)
 {
 	try {
@@ -69,6 +46,18 @@ void	Bureaucrat::signForm(Form &F)
 		return ;
 	}
 	std::cout << this->getName() << " signed " << F.getName() << std::endl;
+}
+void	Bureaucrat::incrementGrade()
+{
+	if (this->getGrade() - 1 < 1)
+		throw (Bureaucrat::GradeTooHighException());
+	this->_grade--;
+}
+void	Bureaucrat::decrementGrade()
+{
+	if (this->getGrade() + 1 > 150)
+		throw (Bureaucrat::GradeTooHighException());
+	this->_grade++;
 }
 
 //classes

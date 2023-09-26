@@ -5,25 +5,31 @@ static void constructor_tests()
 	try {
 		Form grade_e_too_high("grade_e_too_high", 0, 150);
 	} catch (std::exception& e) {
-		std::cout << e.what();
+		std::cout << "1: " << e.what();
 	}
 	try {
 		Form grade_e_too_low("grade_e_too_low", 151, 1);
 	} catch (std::exception& e) {
-		std::cout << e.what();
+		std::cout << "2: " << e.what();
 	}
 	std::cout << std::endl;
 
 	try {
 		Form grade_s_too_high("grade_s_too_high", 150, 0);
 	} catch (std::exception& e) {
-		std::cout << e.what();
+		std::cout << "3: " << e.what();
 	}
 	try {
 		Form grade_s_too_low("grade_s_too_low", 1, 151);
 	} catch (std::exception& e) {
-		std::cout << e.what();
+		std::cout << "4: " << e.what();
 	}
+	std::cout << std::endl;
+
+	Form grade_in_range_high("grade_in_range_high", 1, 1);
+	std::cout << "5: " << grade_in_range_high << std::endl;
+	Form grade_in_range_low("grade_in_range_low", 150, 150);
+	std::cout << "6: " << grade_in_range_low << std::endl;
 	std::cout << "-----------------------------------------------------" << std::endl;
 }
 
@@ -35,17 +41,17 @@ void	sign_tests()
 	try {
 		bureaucrat.signForm(form);
 	} catch (std::exception& e) {
-		std::cout << e.what();
+		std::cout << "7: " << e.what();
 	}
-	std::cout << form << std::endl;
+	std::cout << "8: " << form << std::endl;
+	std::cout << "9: " << bureaucrat << std::endl;
 	bureaucrat.incrementGrade();
-	std::cout << bureaucrat << std::endl;
+	std::cout << "10: " << bureaucrat << std::endl;
 	try {
 		bureaucrat.signForm(form);
 	} catch (std::exception& e) {
-		std::cout << e.what();
+		std::cout << "11: " << e.what();
 	}
-	std::cout << form << std::endl;
 	std::cout << "-----------------------------------------------------" << std::endl;
 }
 
@@ -71,41 +77,3 @@ int main()
 	copy = assignment_constr;
 	std::cout << "copy-constructor:	" << copy << std::endl;
 }
-
-/* int main()
-{
-	Bureaucrat decrement_too_low("decrement_too_low", 150);
-	std::cout << decrement_too_low << std::endl;
-	try {
-		decrement_too_low.decrementGrade();
-	} catch (std::exception& e) {
-		std::cout << e.what();
-	}
-	std::cout << decrement_too_low << std::endl << std::endl;
-
-
-	Bureaucrat increment_too_high("increment_too_high", 1);
-	std::cout << increment_too_high << std::endl;
-	try {
-		increment_too_high.incrementGrade();
-	} catch (std::exception& e) {
-		std::cout << e.what();
-	}
-	std::cout << increment_too_high << std::endl << std::endl;
-
-
-	try {
-		Bureaucrat init_too_low("init_too_low", 250);
-	} catch (std::exception& e) {
-		std::cout << e.what();
-	}
-	std::cout << std::endl;
-
-
-	try {
-		Bureaucrat init_too_high("init_too_high", -42);
-	} catch (std::exception& e) {
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-} */
