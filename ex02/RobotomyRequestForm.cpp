@@ -2,8 +2,12 @@
 #include <sys/time.h>
 
 //private member-function
-void	RobotomyRequestForm::action() const
+void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
+	if (this->getSigned() == false)
+		throw (AForm::FormNotSigned());
+	if (executor.getGrade() > this->getRequiredGradeExecute())
+		throw (AForm::GradeTooLowException());
 
 	struct timeval time;
     int	num = gettimeofday(&time, NULL);

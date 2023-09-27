@@ -12,7 +12,7 @@ private:
 	std::string	_target;
 
 //member-function
-	void	action() const ;
+	void	execute(Bureaucrat const & executor) const;
 
 public:
 //con- and destructors

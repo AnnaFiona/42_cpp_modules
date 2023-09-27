@@ -46,14 +46,6 @@ bool		AForm::getSigned() const
 }
 
 //member-functions
-void	AForm::execute(Bureaucrat const& executor) const
-{
-	if (this->getSigned() == false)
-		throw (AForm::FormNotSigned());
-	if (executor.getGrade() > this->getRequiredGradeExecute())
-		throw (AForm::GradeTooLowException());
-	this->action();
-}
 void	AForm::beSigned(const Bureaucrat& B)
 {
 	if (B.getGrade() <= this->getRequiredGradeSign())

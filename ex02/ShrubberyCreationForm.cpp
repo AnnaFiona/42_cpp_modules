@@ -3,10 +3,15 @@
 
 //private member-function
 //I stole this tree from b'ger (https://ascii.co.uk/art/tree)
-void	ShrubberyCreationForm::action() const
+void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
 	std::ofstream	file;
 	std::string		file_name;
+
+	if (this->getSigned() == false)
+		throw (AForm::FormNotSigned());
+	if (executor.getGrade() > this->getRequiredGradeExecute())
+		throw (AForm::GradeTooLowException());
 
 	file_name = this->getTarget() + "_shrubbery";
 	file.open(file_name.c_str());

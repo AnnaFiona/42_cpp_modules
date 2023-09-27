@@ -15,9 +15,6 @@ private:
 	const int			_required_grade_sign;
 	bool				_signed;
 
-//pure virtual member-function
-	virtual void	action() const = 0;
-
 public:
 //con- and destructor
 	AForm();
@@ -34,8 +31,8 @@ public:
 	bool		getSigned() const;
 
 //member-functions
-	void	execute(Bureaucrat const& executor) const;
-	void	beSigned(const Bureaucrat& B);
+	virtual void	execute(Bureaucrat const& executor) const = 0;
+	void			beSigned(const Bureaucrat& B);
 
 //classes
 	class GradeTooHighException : public std::exception

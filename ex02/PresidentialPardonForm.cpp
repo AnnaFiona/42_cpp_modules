@@ -1,8 +1,13 @@
 #include "PresidentialPardonForm.hpp"
 
 //private member-function
-void	PresidentialPardonForm::action() const
+void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
+	if (this->getSigned() == false)
+		throw (AForm::FormNotSigned());
+	if (executor.getGrade() > this->getRequiredGradeExecute())
+		throw (AForm::GradeTooLowException());
+
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
