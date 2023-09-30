@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(const std::string name, const int grade) : _name(name)
 		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = grade;
 }
-Bureaucrat::Bureaucrat(const Bureaucrat& B) : _name(B.getName())
+Bureaucrat::Bureaucrat(const Bureaucrat& B)
 {
 	*(this) = B;
 }
@@ -67,7 +67,7 @@ void	Bureaucrat::incrementGrade()
 void	Bureaucrat::decrementGrade()
 {
 	if (this->getGrade() + 1 > 150)
-		throw (Bureaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooHighException());
 	this->_grade++;
 }
 

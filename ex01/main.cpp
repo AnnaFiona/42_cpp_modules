@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-static void constructor_tests()
+static void default_constructor_tests()
 {
 	try {
 		Form grade_e_too_high("grade_e_too_high", 0, 150);
@@ -38,42 +38,31 @@ void	sign_tests()
 	Bureaucrat	bureaucrat("bureaucrat", 43);
 	Form		form;
 
-	try {
-		bureaucrat.signForm(form);
-	} catch (std::exception& e) {
-		std::cout << "7: " << e.what();
-	}
-	std::cout << "8: " << form << std::endl;
-	std::cout << "9: " << bureaucrat << std::endl;
+	bureaucrat.signForm(form);
+	std::cout << "7: " << form << std::endl;
+	std::cout << "8: " << bureaucrat << std::endl;
 	bureaucrat.incrementGrade();
-	std::cout << "10: " << bureaucrat << std::endl;
-	try {
-		bureaucrat.signForm(form);
-	} catch (std::exception& e) {
-		std::cout << "11: " << e.what();
-	}
+	std::cout << "9: " << bureaucrat << std::endl;
+	bureaucrat.signForm(form);
 	std::cout << "-----------------------------------------------------" << std::endl;
 }
 
 int main()
 {
-	constructor_tests();
+	default_constructor_tests();
 	sign_tests();
 
 	Bureaucrat	b("b", 2);
 	Form		default_constr;
 	Form		copy(default_constr);
-	Form		assignment_constr("assigned", 50, 100);
+	Form		assignment_operator("assigned", 50, 100);
 
-	std::cout << "default-constructor:	" << default_constr << std::endl;
-	std::cout << "copy-constructor:	" << copy << std::endl;
-	std::cout << "assignment-constructor:	" << assignment_constr << std::endl;
-	try {
-		b.signForm(assignment_constr);
-	} catch (std::exception& e) {
-		std::cout << e.what();
-	}
-	std::cout << "assignment-constructor:	" << assignment_constr << std::endl;
-	copy = assignment_constr;
-	std::cout << "copy-constructor:	" << copy << std::endl;
+	std::cout << "10: " << "default-constructor:	" << default_constr << std::endl;
+	std::cout << "11: " << "copy-constructor:		" << copy << std::endl;
+	std::cout << "12: " << "assignment-operator:	" << assignment_operator << std::endl;
+
+	b.signForm(copy);
+	std::cout << "13: " << "copy-constructor:		" << copy << std::endl;
+	assignment_operator = copy;
+	std::cout << "14: " << "assignment-operator:	" << assignment_operator << std::endl;
 }

@@ -24,13 +24,13 @@ int main()
 
 //init_grade_too_high
 	try {
-		Bureaucrat init_too_high("init_too_high", -42);
+		Bureaucrat init_too_high("init_too_high", 0);
 	} catch (std::exception& e) {
 		std::cout << "6: " << e.what();
 	};
 //init_grade_too_low
 	try {
-		Bureaucrat init_too_low("init_too_low", 250);
+		Bureaucrat init_too_low("init_too_low", 151);
 	} catch (std::exception& e) {
 		std::cout << "7: " << e.what();
 	}
@@ -45,5 +45,10 @@ int main()
 	} catch (std::exception& e) {
 		std::cout << "11: " << e.what();
 	}
-	std::cout << "12: " << assigned << std::endl;
+	std::cout << "12: " << assigned << std::endl << std::endl;
+
+
+//copy-constructor
+	Bureaucrat	copy(assigned);
+	std::cout << "13: " << copy << std::endl;
 }
