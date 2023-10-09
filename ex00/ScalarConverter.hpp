@@ -1,16 +1,18 @@
 #pragma once
 
+#include <iostream>
+#include <sstream>
 #include <string>
 
 
-class ScalarCoverter
+class ScalarConverter
 {
 public:
 //con- and destructors
-	ScalarCoverter();
-	ScalarCoverter(const ScalarCoverter& S);
-	ScalarCoverter& operator = (const ScalarCoverter& S);
-	~ScalarCoverter();
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter& S);
+	ScalarConverter& operator = (const ScalarConverter& S);
+	~ScalarConverter();
 
 //methods
 	static void	convert(const std::string str);

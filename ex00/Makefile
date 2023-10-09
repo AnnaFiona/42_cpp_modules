@@ -1,15 +1,15 @@
-NAME = 
+NAME = converter
 
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =	
+SRC =	main.cpp ScalarConverter.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
 
-DEP =	
+DEP =	ScalarConverter.hpp
 
 .PHONY: clean fclean all
 
