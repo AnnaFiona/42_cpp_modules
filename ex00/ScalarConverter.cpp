@@ -13,27 +13,49 @@ ScalarConverter& ScalarConverter::operator = (const ScalarConverter& S)
 }
 ScalarConverter::~ScalarConverter() {}
 
-//methods
-void	ScalarConverter::convert(const std::string str)
+
+static bool	check_if_int(const char *str)
 {
-	std::stringstream	stream;
-	double				d;
-	float				f;
-	char				c;
-	int					i;
+	int	x = 0;
 
-	stream << str;
-	stream >> i;
-	stream << str;
-	static_cast<char>(stream) >> c;
-	stream << str;
-	stream >> f;
-	stream << str;
-	stream >> d;
+	if (str[0] == '-' || str[0] == '+');
+		x++;
+	while (str[x])
+	{
+		if (str[x] < '0' || str[x] > '9')
+			return (false);
+	}
+	return (true);
+}
 
-	std::cout << "int:		" << i << std::endl;
-	std::cout << "char:		" << c << std::endl;
-	std::cout << "float:	" << f << std::endl;
-	std::cout << "double:	" << d << std::endl;
+static bool	check_if_char(const char *str)
+{
+	if (str[0] )
 
+}
+
+int	get_type(const char *str)
+{
+	if (str == NULL || str[0] == '\0')
+		return (0);
+	if (check_if_int(str) == true)
+		return (1);
+	if (check_if_char(str) == true)
+		return (2);
+	if (check_if_float(str) == true)
+		return (3);
+	if (check_if_double(str) == true)
+		return (4);
+	return (5);
+}
+
+
+
+//methods
+void	ScalarConverter::convert(const char *str)
+{
+	std::cout << "int:	" << std::atoi(str) << std::endl;
+	std::cout << "char:	" << static_cast<char>(std::atoi(str)) << std::endl;
+	std::cout << "float:	" << std::atof(str) << std::endl;
+	std::cout << "double:	" << std::atof(str) << std::endl;
 }

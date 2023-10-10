@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <sstream>
+#include <cstdlib>
 #include <string>
 
 
@@ -15,5 +15,5 @@ public:
 	~ScalarConverter();
 
 //methods
-	static void	convert(const std::string str);
+	static void	convert(const char *str);
 };
