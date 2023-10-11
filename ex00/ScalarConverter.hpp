@@ -7,13 +7,14 @@
 
 class ScalarConverter
 {
-public:
+private:
 //con- and destructors
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& S);
 	ScalarConverter& operator = (const ScalarConverter& S);
 	~ScalarConverter();
 
+public:
 //methods
 	static void	convert(const char *str);
 };

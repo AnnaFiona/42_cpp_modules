@@ -20,6 +20,8 @@ static bool	check_if_int(const char *str)
 
 	if (str[0] == '-' || str[0] == '+');
 		x++;
+	if (str[x] == '/0')
+		return (false);
 	while (str[x])
 	{
 		if (str[x] < '0' || str[x] > '9')
@@ -30,8 +32,65 @@ static bool	check_if_int(const char *str)
 
 static bool	check_if_char(const char *str)
 {
-	if (str[0] )
+	if (str[0] >= 32 && str[0] <= 126 && str[1] == '\0')
+		return (true);
+	return (false);
+}
 
+static bool	check_if_float(const char *str)
+{
+	bool	digit = false;
+	int		x = 0;
+
+	if (str[0] == '-' || str[0] == '+');
+		x++;
+	if (str[x] == '/0')
+		return (false);
+	while (str[x] && str[x] >= '0' && str[x] <= '9')
+	{
+		digit = true;
+		x++;
+	}
+	if (str[x] != '.' || digit == false)
+		return (false);
+	digit = false;
+	while (str[x] && str[x] >= '0' && str[x] <= '9')
+	{
+		digit = true;
+		x++;
+	}
+	if (str[x] != 'f' || digit == false)
+		return (false);
+	if (str[x + 1] != '\0')
+		return (false);
+	return (true);
+}
+
+static bool check_if_double(const char *str)
+{
+	bool	digit = false;
+	int		x = 0;
+
+	if (str[0] == '-' || str[0] == '+');
+		x++;
+	if (str[x] == '/0')
+		return (false);
+	while (str[x] && str[x] >= '0' && str[x] <= '9')
+	{
+		digit = true;
+		x++;
+	}
+	if (str[x] != '.' || digit == false)
+		return (false);
+	digit = false;
+	while (str[x] && str[x] >= '0' && str[x] <= '9')
+	{
+		digit = true;
+		x++;
+	}
+	if (digit == false || str[x] != '\0')
+		return (false);
+	return (true);
 }
 
 int	get_type(const char *str)
