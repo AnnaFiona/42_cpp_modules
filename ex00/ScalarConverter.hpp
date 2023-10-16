@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <cstdlib>
+#include <sstream>
 #include <string>
 
 
@@ -16,5 +16,12 @@ private:
 
 public:
 //methods
-	static void	convert(const char *str);
+	static void	convert(const std::string str);
 };
+
+
+//ScalarConverterGetTypes.cpp
+bool	check_if_int(const std::string str);
+bool	check_if_char(const std::string str);
+bool	check_if_float(const std::string str);
+bool	check_if_double(const std::string str);

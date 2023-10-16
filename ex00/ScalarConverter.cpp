@@ -13,108 +13,45 @@ ScalarConverter& ScalarConverter::operator = (const ScalarConverter& S)
 }
 ScalarConverter::~ScalarConverter() {}
 
-
-static bool	check_if_int(const char *str)
-{
-	int	x = 0;
-
-	if (str[0] == '-' || str[0] == '+');
-		x++;
-	if (str[x] == '/0')
-		return (false);
-	while (str[x])
-	{
-		if (str[x] < '0' || str[x] > '9')
-			return (false);
-	}
-	return (true);
-}
-
-static bool	check_if_char(const char *str)
-{
-	if (str[0] >= 32 && str[0] <= 126 && str[1] == '\0')
-		return (true);
-	return (false);
-}
-
-static bool	check_if_float(const char *str)
-{
-	bool	digit = false;
-	int		x = 0;
-
-	if (str[0] == '-' || str[0] == '+');
-		x++;
-	if (str[x] == '/0')
-		return (false);
-	while (str[x] && str[x] >= '0' && str[x] <= '9')
-	{
-		digit = true;
-		x++;
-	}
-	if (str[x] != '.' || digit == false)
-		return (false);
-	digit = false;
-	while (str[x] && str[x] >= '0' && str[x] <= '9')
-	{
-		digit = true;
-		x++;
-	}
-	if (str[x] != 'f' || digit == false)
-		return (false);
-	if (str[x + 1] != '\0')
-		return (false);
-	return (true);
-}
-
-static bool check_if_double(const char *str)
-{
-	bool	digit = false;
-	int		x = 0;
-
-	if (str[0] == '-' || str[0] == '+');
-		x++;
-	if (str[x] == '/0')
-		return (false);
-	while (str[x] && str[x] >= '0' && str[x] <= '9')
-	{
-		digit = true;
-		x++;
-	}
-	if (str[x] != '.' || digit == false)
-		return (false);
-	digit = false;
-	while (str[x] && str[x] >= '0' && str[x] <= '9')
-	{
-		digit = true;
-		x++;
-	}
-	if (digit == false || str[x] != '\0')
-		return (false);
-	return (true);
-}
-
-int	get_type(const char *str)
-{
-	if (str == NULL || str[0] == '\0')
-		return (0);
-	if (check_if_int(str) == true)
-		return (1);
-	if (check_if_char(str) == true)
-		return (2);
-	if (check_if_float(str) == true)
-		return (3);
-	if (check_if_double(str) == true)
-		return (4);
-	return (5);
-}
-
-
-
 //methods
-void	ScalarConverter::convert(const char *str)
+void	ScalarConverter::convert(const std::string str)
 {
-	std::cout << "int:	" << std::atoi(str) << std::endl;
-	std::cout << "char:	" << static_cast<char>(std::atoi(str)) << std::endl;
-	std::cout << "float:	" << std::atof(str) << std::endl;
-	std::cout << "double:	" << std::atof(str) << std::endl;
+	std::istringstream stream(str);
+	double	d;
+	float	f;
+	char	c;
+	int		i;
+	if (check_if_int(str) == true) {
+		stream >> i;
+		c = static_cast<char>(i);
+		f = static_cast<float>(i);
+		d = static_cast<double>(i);
+	}
+	else if (check_if_char(str) == true) {
+		stream >> c;
+		i = static_cast<int>(c);
+		f = static_cast<float>(c);
+		d = static_cast<double>(c);
+	}
+	else if (check_if_float(str) == true) {
+		stream >> f;
+		i = static_cast<int>(f);
+		c = static_cast<char>(f);
+		d = static_cast<double>(f);
+	}
+	else if (check_if_double(str) == true) {
+		stream >> d;
+		i = static_cast<int>(d);
+		c = static_cast<char>(d);
+		f = static_cast<float>(d);
+	}
+	else {
+		std::cout << "type conversion not possible" << std::endl;
+		return ;
+	}
+
+	std::cout << "int:	" << i << std::endl;
+	std::cout << "char:	" << c << std::endl;
+	std::cout << "float:	" << f << std::endl;
+	std::cout << "double:	" << d << std::endl;
 }

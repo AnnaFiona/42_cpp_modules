@@ -3,7 +3,7 @@ NAME = converter
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =	main.cpp ScalarConverter.cpp
+SRC =	main.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
