@@ -31,3 +31,5 @@ bool	check_if_double(const std::string str);
 //ScalarConverterPrintUtils.cpp
 bool	print_int(const std::string str);
 bool	print_char(const std::string str);
+bool	print_float(const std::string str);
+bool	print_double(const std::string str);

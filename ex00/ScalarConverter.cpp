@@ -25,10 +25,10 @@ void	ScalarConverter::convert(const std::string str)
 		fail = print_char(str);
 	}
 	else if (check_if_float(str) == true) {
-
+		fail = print_float(str);
 	}
 	else if (check_if_double(str) == true) {
-
+		fail = print_double(str);
 	}
 	else if (fail == false) 
 		std::cout << "type conversion not possible" << std::endl;
