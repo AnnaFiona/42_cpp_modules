@@ -51,7 +51,6 @@ bool	check_if_float(const std::string str)
 		return (false);
 	if (str.length() != x + 1)
 		return (false);
-	std::cout << "f: " << str[x] << std::endl;
 	return (true);
 }
 
@@ -80,6 +79,5 @@ bool	check_if_double(const std::string str)
 	}
 	if (digit == false || str.length() != x)
 		return (false);
-	std::cout << "d " << str[x] << std::endl;
 	return (true);
 }

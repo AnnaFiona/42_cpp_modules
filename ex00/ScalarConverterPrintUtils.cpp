@@ -21,8 +21,8 @@ bool	print_int(const std::string str)
 	}
 	else
 		std::cout << "char:	not possible" << std::endl;
-	std::cout << "float:	" << static_cast<float>(i) << std::endl;
-	std::cout << "double:	" << static_cast<double>(i) << std::endl;
+	std::cout << "float:	" << static_cast<float>(i) << ".0f" << std::endl;
+	std::cout << "double:	" << static_cast<double>(i) << ".0" << std::endl;
 	return false;
 }
 
@@ -39,13 +39,14 @@ bool	print_char(const std::string str)
 
 	std::cout << "int:	" << static_cast<int>(c) << std::endl;
 	std::cout << "char:	" << c << std::endl;
-	std::cout << "float:	" << static_cast<float>(c) << std::endl;
-	std::cout << "double:	" << static_cast<double>(c) << std::endl;
+	std::cout << "float:	" << static_cast<float>(c) << ".0f" << std::endl;
+	std::cout << "double:	" << static_cast<double>(c) << ".0" << std::endl;
 	return false;
 }
 
 bool	print_float(const std::string str)
 {
+	std::istringstream stream_int(str);
 	std::istringstream stream(str);
 	float	d;
 	int		i;
@@ -56,13 +57,13 @@ bool	print_float(const std::string str)
 	if (stream.fail())
 		return true;
 	
-	stream >> i;
-	if (stream.fail())
+	stream_int >> i;
+	if (stream_int.fail())
 		std::cout << "int:	not possible" << std::endl;
 	else
 		std::cout << "int:	" << static_cast<int>(d) << std::endl;
 
-	if (stream.fail() || i < 0 || i > 127)
+	if (stream_int.fail() || i < 0 || i > 127)
 		std::cout << "char:	not possible" << std::endl;
 	else if (i >= 32 && i <= 126)
 		std::cout << "char:	" << static_cast<char>(d) << std::endl;
