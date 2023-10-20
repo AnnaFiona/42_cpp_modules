@@ -19,7 +19,7 @@ bool	check_if_int(const std::string str)
 
 bool	check_if_char(const std::string str)
 {
-	if (str[0] >= 32 && str[0] <= 126 && str.length() == 1)
+	if (str.length() == 1 && str[0] >= 0 && str[0] <= 127)
 		return (true);
 	return (false);
 }

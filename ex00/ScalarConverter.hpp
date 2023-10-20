@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include <sstream>
+#include <cstdlib>
 #include <string>
-#include <limits>
 
 
 class ScalarConverter
@@ -27,8 +27,13 @@ bool	check_if_char(const std::string str);
 bool	check_if_float(const std::string str);
 bool	check_if_double(const std::string str);
 
-//ScalarConverterPrintUtils.cpp
+//ScalarConverterPrint.cpp
 bool	print_int(const std::string str);
 bool	print_char(const std::string str);
 bool	print_float(const std::string str);
 bool	print_double(const std::string str);
+
+//ScalarConverterPrintUtils.cpp
+void	print_nan_inf(const std::string str, const char float_or_double);
+void	print_int_and_char(const std::string str, const float f);
+void	print_int_and_char(const std::string str, const double d);

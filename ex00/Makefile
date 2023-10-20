@@ -3,8 +3,8 @@ NAME = converter
 CXX = c++
 CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
-SRC =	main.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp ScalarConverterPrintUtils.cpp
-T_SRC = 	tests.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp ScalarConverterPrintUtils.cpp
+SRC =		main.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp ScalarConverterPrintU.cpp ScalarConverterPrintUtils.cpp
+T_SRC = 	tests.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp ScalarConverterPrint.cpp ScalarConverterPrintUtils.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
@@ -30,16 +30,16 @@ $(NAME): $(OBJDIR) $(OBJ)
 
 tests: $(OBJDIR) $(T_OBJ)
 	$(CXX) $(CXXFLAGS) $(T_OBJ) -o tests
-	#./tests
+	./tests
 
 clean:
 	@rm -rf $(OBJDIR)
 	@echo all .o and .d files deleted
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) tests
 	@echo
-	@echo ...and the $(NAME) too
+	@echo ...and the executable too
 
 re: fclean all
 
