@@ -1,13 +1,17 @@
 NAME = converter
 
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp ScalarConverterPrintUtils.cpp
+T_SRC = 	tests.cpp ScalarConverter.cpp ScalarConverterGetTypes.cpp ScalarConverterPrintUtils.cpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
+
+T_OBJFILES = $(T_SRC:.cpp=.o)
+T_OBJ = $(addprefix $(OBJDIR), $(T_OBJFILES))
 
 DEP =	ScalarConverter.hpp
 
@@ -23,6 +27,10 @@ $(OBJDIR):
 
 $(NAME): $(OBJDIR) $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+
+tests: $(OBJDIR) $(T_OBJ)
+	$(CXX) $(CXXFLAGS) $(T_OBJ) -o tests
+	#./tests
 
 clean:
 	@rm -rf $(OBJDIR)

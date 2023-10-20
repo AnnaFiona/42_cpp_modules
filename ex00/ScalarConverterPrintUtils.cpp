@@ -5,8 +5,6 @@ bool	print_int(const std::string str)
 	std::istringstream stream(str);
 	int		i;
 
-	std::cout << "int" << std::endl;
-
 	stream >> i;
 	if (stream.fail())
 		return true;
@@ -30,8 +28,6 @@ bool	print_char(const std::string str)
 {
 	std::istringstream stream(str);
 	char	c;
-
-	std::cout << "char" << std::endl;
 
 	stream >> c;
 	if (stream.fail())
@@ -69,8 +65,6 @@ bool	print_float(const std::string str)
 	std::istringstream	stream(str);
 	float	f_check;
 	float	f;
-
-	std::cout << "float" << std::endl;
 
 	stream >> f;
 	if (stream.fail())
@@ -117,8 +111,6 @@ bool	print_double(const std::string str)
 	double	d;
 	float	f_check;
 	float	f;
-
-	std::cout << "double" << std::endl;
 
 	stream >> d;
 	if (stream.fail())
