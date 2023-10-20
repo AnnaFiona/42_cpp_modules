@@ -4,13 +4,14 @@
 int main()
 {
 	Data		*ptr = new Data;
+	Data		*p = NULL;
 	uintptr_t	raw;
 
 	raw = Serializer::serialize(ptr);
-//	ptr = Serializer::deserialize(raw);
+	p = Serializer::deserialize(raw);
 
-	std::cout << "raw:	" << Serializer::deserialize(raw) << std::endl;
-	std::cout << "ptr:	" << &ptr << std::endl;
+	std::cout << "p:	" << p << std::endl;
+	std::cout << "ptr:	" << ptr << std::endl;
 
 	delete ptr;
 }
