@@ -21,7 +21,7 @@ static void	check(const int test_nr, std::string input, const std::string expect
 		std::cout << green << test_nr << ": OK" << white << std::endl;
 	else
 	{
-		std::cout << red_bold << test_nr << ": FAIL" << white << std::endl;
+		std::cout << red_bold << test_nr << ": FAIL: " << white << input << std::endl;
 		std::cout << yellow << "expected output:" << white << std::endl << expected_output;
 		std::cout << yellow << "function output:" << white << std::endl << output << std::endl;
 	}
@@ -71,10 +71,19 @@ void	float_tests()
 	check(6, "4.f", "type conversion not possible\n");
 	check(7, "4.2a", "type conversion not possible\n");
 	check(8, "4.2f", "int:	4\nchar:	not displayable\nfloat:	4.2f\ndouble:	4.2\n");
-	check(9, "nanf", "int:	not possible\nchar:	not possible\nfloat:	nanf\ndouble:	nan\n");
-	check(10, "-inff", "int:	not possible\nchar:	not possible\nfloat:	-inff\ndouble:	-inf\n");
-	check(11, "+inff", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
-	check(12, "inff", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
+	check(9, "+4.2f", "int:	4\nchar:	not displayable\nfloat:	4.2f\ndouble:	4.2\n");
+	check(10, "-4.2f", "int:	-4\nchar:	not possible\nfloat:	-4.2f\ndouble:	-4.2\n");
+	check(11, "42.25f", "int:	42\nchar:	'*'\nfloat:	42.25f\ndouble:	42.25\n");
+	
+	check(12, "+4545564.25456f", "int:	4545564\nchar:	not possible\nfloat:	4545564.25456f\ndouble:	4545564.25456\n");
+	check(13, "-4575.24554f", "int:	-4575\nchar:	not possible\nfloat:	-4575.24554f\ndouble:	-4575.24554\n");
+	check(14, "-4.24554f", "int:	-4\nchar:	not possible\nfloat:	-4.24554f\ndouble:	-4.24554\n");
+	check(15, "-4575.2f", "int:	-4\nchar:	not possible\nfloat:	-4575.2f\ndouble:	-4575.2\n");
+
+	check(16, "nanf", "int:	not possible\nchar:	not possible\nfloat:	nanf\ndouble:	nan\n");
+	check(17, "-inff", "int:	not possible\nchar:	not possible\nfloat:	-inff\ndouble:	-inf\n");
+	check(18, "+inff", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
+	check(19, "inff", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
 
 
 	std::cout << std::endl;
@@ -90,10 +99,20 @@ void	double_tests()
 	check(5, "+4.", "type conversion not possible\n");
 	check(6, "4.", "type conversion not possible\n");
 	check(7, "4.2", "int:	4\nchar:	not displayable\nfloat:	4.2f\ndouble:	4.2\n");
-	check(8, "nan", "int:	not possible\nchar:	not possible\nfloat:	nanf\ndouble:	nan\n");
-	check(9, "-inf", "int:	not possible\nchar:	not possible\nfloat:	-inff\ndouble:	-inf\n");
-	check(10, "+inf", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
-	check(11, "inff", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
+	check(8, "-4.2", "int:	-4\nchar:	not possible\nfloat:	-4.2f\ndouble:	-4.2\n");
+	check(9, "42.25", "int:	42\nchar:	'*'\nfloat:	42.25f\ndouble:	42.25\n");
+
+
+	check(10, "+4545564.25456", "int:	4545564\nchar:	not possible\nfloat:	4545564.25456f\ndouble:	4545564.25456\n");
+	check(11, "-4575.24554", "int:	-4575\nchar:	not possible\nfloat:	-4575.24554f\ndouble:	-4575.24554\n");
+	check(12, "-4.24554", "int:	-4\nchar:	not possible\nfloat:	-4.24554f\ndouble:	-4.24554\n");
+	check(13, "-4575.2", "int:	-4575\nchar:	not possible\nfloat:	-4575.2f\ndouble:	-4575.2\n");
+
+
+	check(14, "nan", "int:	not possible\nchar:	not possible\nfloat:	nanf\ndouble:	nan\n");
+	check(15, "-inf", "int:	not possible\nchar:	not possible\nfloat:	-inff\ndouble:	-inf\n");
+	check(16, "+inf", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
+	check(17, "inff", "int:	not possible\nchar:	not possible\nfloat:	inff\ndouble:	inf\n");
 	std::cout << std::endl;
 }
 
