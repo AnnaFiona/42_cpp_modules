@@ -61,8 +61,8 @@ bool	check_if_double(const std::string str)
 
 	if (str == "nan" || str == "-inf" || str == "+inf" || str == "inf")
 		return (true);
-/* 	if (str[0] == '-' || str[0] == '+')
-		x++; */
+	if (str[0] == '-' || str[0] == '+')
+		x++;
 	while (str.length() > x && str[x] >= '0' && str[x] <= '9')
 	{
 		digit = true;
