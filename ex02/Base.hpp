@@ -2,7 +2,6 @@
 
 #include <sys/time.h>
 #include <iostream>
-#include <cstdlib>
 
 class Base
 {
