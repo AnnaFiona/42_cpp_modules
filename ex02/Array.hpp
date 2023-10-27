@@ -1,10 +1,13 @@
 #pragma once
 
+#include <stdexcept>
+
 template<typename T>
 class Array
 {
 private:
-	T	*arr;
+	T				*_arr;
+	unsigned int	_size;
 
 public:
 //con- and destructors
@@ -13,6 +16,11 @@ public:
 	Array(Array &A);
 	Array	&operator = (Array &A);
 	~Array();
+
+//methods
+	unsigned int	size() const;
+	T&	operator [] (unsigned int x);
+	T	operator [] (const unsigned int x) const;
 };
 
 

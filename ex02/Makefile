@@ -5,7 +5,7 @@ CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp
 
-DEP =	Array.hpp
+DEP =	Array.hpp Array.tpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
