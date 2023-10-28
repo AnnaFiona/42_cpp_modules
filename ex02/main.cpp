@@ -2,56 +2,86 @@
 #include <iostream>
 
 
-/* void	default_constructor() {
-	Array<int>	empty();
+void	exception_handling() {
+	std::cout << "///EXCEPTION-HANDLING///" << std::endl;
+	Array<char>	arr(10);
+	Array<int>	empty;
 
-	std::cout << empty[0] << std::endl;
-} */
+	try {
+		std::cout << empty[0] << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		std::cout << arr[11] << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		std::cout << arr[-4] << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
 
 void	const_arrays() {
-	const Array<std::string> const_str(10);
-	Array<std::string>	str(10);
+//	std::cout << "///CONST-ARRAYS///" << std::endl;
+	const Array<int>	const_str(10);
+	Array<int>			str(10);
 
-	str[2] = "two";
-	const_str[3] = "three";
-	std::cout << str[2] << std::endl;
-	std::cout << const_str[3] << std::endl;
-
+	str[2] = 2;
+//	const_str[3] = 3;
 //	const_str = str;
+//	std::cout << std::endl;
 }
 
 void	copy_constructor() {
 	std::cout << "///COPY-CONSTRUCTOR///" << std::endl;
-	Array<int>	arr(10);
-	for (int x = 0; x < 10; x++)
-		arr[x] = x;
-	Array<int>	copy(arr);
+	Array<char>	arr(10);
+	for (unsigned x = 0; x < arr.size(); x++)
+		arr[x] = x + 65;
+	Array<char>	copy(arr);
 
-	for (int x = 0; x < 10; x++)
-		std::cout << arr[x] << std::endl;
+	for (unsigned x = 0; x < copy.size(); x++)
+		std::cout << "arr: " << arr[x] << "	copy: " << copy[x] << std::endl;
+	std::cout << std::endl;
+
+	for (unsigned x = 0; x < arr.size(); x++)
+		arr[x] += 10;
+	for (unsigned x = 0; x < copy.size(); x++)
+		copy[x] += 32;
+
+	for (unsigned x = 0; x < copy.size(); x++)
+		std::cout << "arr: " << arr[x] << "	copy: " << copy[x] << std::endl;
 	std::cout << std::endl;
 }
 
 void	copy_operator() {
 	std::cout << "///COPY-OPERATOR///" << std::endl;
 	Array<int>	arr(5);
-	Array<int>	copy(10);
+	Array<int>	copy;
 
-	for (int x = 0; x < arr.size(); x++)
+	for (unsigned x = 0; x < arr.size(); x++)
 		arr[x] = x;
 	copy = arr;
-	for (int x = 0; x < copy.size(); x++)
+	for (unsigned x = 0; x < copy.size(); x++)
 		std::cout << "arr: " << arr[x] << "	copy: " << copy[x] << std::endl;
 	
-	for (int x = 0; x < copy.size(); x++)
+	for (unsigned x = 0; x < arr.size(); x++)
 		arr[x] += 10;
-	for (int x = 0; x < copy.size(); x++)
+	for (unsigned x = 0; x < copy.size(); x++)
+		copy[x] -= 10;
+	std::cout << std::endl;
+	for (unsigned x = 0; x < copy.size(); x++)
 		std::cout << "arr: " << arr[x] << "	copy: " << copy[x] << std::endl;
 	std::cout << std::endl;
 }
 
 int	main()
 {
+	exception_handling();
+	const_arrays();
 	copy_constructor();
 	copy_operator();
 }
