@@ -10,17 +10,17 @@ void	exception_handling() {
 	try {
 		std::cout << empty[0] << std::endl;
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 	try {
 		std::cout << arr[11] << std::endl;
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 	try {
 		std::cout << arr[-4] << std::endl;
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 	std::cout << std::endl;
 }
