@@ -2,13 +2,13 @@
 
 #include <stdexcept>
 #include <algorithm>
+#include <vector>
 
 class Span
 {
 private:
-	int				*_arr;
-	unsigned int	_len;
-	unsigned int	N;
+	std::vector<int>	V;
+	unsigned int		N;
 
 public:
 //con- and destructors
@@ -18,8 +18,13 @@ public:
 	Span&	operator = (const Span& S);
 	~Span();
 
+//getter
+	int		at(const int x) const;
+	int		getN() const;
+
 //methods
-	void	addNumber(int x) throw (std::out_of_range());
-	int		shortestSpan() const throw (std::???());
-	int		longestSpan() const throw (std::???());
+	void	addNumber(const int x);
+	void	addNumber(const std::vector<int>::iterator begin, const std::vector<int>::iterator end);
+	int		shortestSpan() const;
+	int		longestSpan() const;
 };

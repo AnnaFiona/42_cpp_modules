@@ -1,70 +1,73 @@
 #include "Span.hpp"
 
-Span::Span() : _len(0), N(0)
-{
-	this->_arr = new int[0];
-}
-Span::Span(const unsigned int n) : _len(0), N(n)
-{
-	this->_arr = new int[n];
-}
-Span::Span(const Span &S) : _len(S._len), N(S.N)
-{
-	this->_arr = new int[S.N];
-	for (size_t x = 0; x < this->N; x++)
-		this->_arr[x] = S._arr[x];
-}
+Span::Span() : N(0) {}
+Span::Span(const unsigned int n) : N(n) {}
+Span::Span(const Span &S) : V(S.V), N(S.N) {}
 Span	&Span::operator = (const Span &S)
 {
-	delete [] this->_arr;
-	this->_arr = new int[S.N];
-	this->_len = S._len;
+	this->V = S.V;
 	this->N = S.N;
-	for (size_t x = 0; x < this->N; x++)
-		this->_arr[x] = S._arr[x];
 	return (*this);
 }
-Span::~Span()
+Span::~Span() {}
+
+//getter
+int		Span::at(const int x) const
 {
-	delete [] this->_arr;
+	return (this->V.at(x));
+}
+int		Span::getN() const
+{
+	return (this->N);
+}
+
+
+static int	get_span(const int a, const int b)
+{
+	int	span = 0;
+
+	for (int x = a; x < b; x++)
+		span++;
+	return (span);
 }
 
 //methods
-void	Span::addNumber(int x) throw (std::out_of_range())
+void	Span::addNumber(const int x)
 {
-	if (this->_len + 1 == this->N)
-		throw (std::out_of_range("cannot add number; array is full"));
-	this->_len++;
-	this->_arr[this->_len] = x;
+	if (this->V.size() == this->N)
+		throw (std::length_error("cannot add number: vector is full"));
+	this->V.push_back(x);
 }
-int		Span::shortestSpan() const throw (std::???())
+void	Span::addNumber(const std::vector<int>::iterator begin, const std::vector<int>::iterator end)
 {
-	if (this->N <= 1)
-		throw (std::???("array doesn't have enough numbers"));
+	if (end - begin + this->V.size() >= N)
+		throw (std::length_error("cannot add number: too many numbers to add or vector is full"));
+	this->V.insert(this->V.end(), begin, end);
+}
+int		Span::shortestSpan() const
+{
+	if (this->N <= 1 || this->V.size() <= 1)
+		throw (std::length_error("not enough numbers"));
 	
-	int	*copy = new int[this->N];
+	std::vector<int>					copy(this->V);
+	std::vector<int>::const_iterator	iter = copy.begin();
+	int									span = 0;
 
-	for (size_t x = 0; x < this->N; x++)
-		copy[x] = this->_arr[x];
-	std::sort(copy, copy + this->_len);
-
-
-
-	delete [] copy;
-}
-int		Span::longestSpan() const throw (std::???())
-{
-	if (this->N <= 1)
-		throw (std::???("array doesn't have enough numbers"));
-
-	int	*copy = new int[this->N];
-	int	span = 0;
-
-	for (size_t x = 0; x < this->N; x++)
-		copy[x] = this->_arr[x];
-	std::sort(copy, copy + this->_len);
-	for (int x = copy[0]; x < copy[this->_len]; x++)
-		span++;
-	delete [] copy;
+	std::sort(copy.begin(), copy.end());
+	while (iter - 1 < copy.end()) {
+		if (span > get_span(*iter, *iter + 1))
+			span = get_span(*iter, *iter + 1);
+		iter++;
+	}
 	return (span);
+}
+int		Span::longestSpan() const
+{
+	if (this->N <= 1 || this->V.size() <= 1)
+		throw (std::length_error("not enough numbers"));
+
+	std::vector<int>	copy(this->V);
+
+	std::sort(copy.begin(), copy.end());
+	return (get_span(copy.front(), copy.back()));
 }
