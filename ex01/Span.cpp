@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <iostream>
 
 Span::Span() : N(0) {}
 Span::Span(const unsigned int n) : N(n) {}
@@ -22,15 +23,6 @@ int		Span::getN() const
 }
 
 
-static int	get_span(const int a, const int b)
-{
-	int	span = 0;
-
-	for (int x = a; x < b; x++)
-		span++;
-	return (span);
-}
-
 //methods
 void	Span::addNumber(const int x)
 {
@@ -40,7 +32,7 @@ void	Span::addNumber(const int x)
 }
 void	Span::addNumber(const std::vector<int>::iterator begin, const std::vector<int>::iterator end)
 {
-	if (end - begin + this->V.size() >= N)
+	if (end - begin + this->V.size() > N)
 		throw (std::length_error("cannot add number: too many numbers to add or vector is full"));
 	this->V.insert(this->V.end(), begin, end);
 }
@@ -54,9 +46,10 @@ int		Span::shortestSpan() const
 	int									span = 0;
 
 	std::sort(copy.begin(), copy.end());
-	while (iter - 1 < copy.end()) {
-		if (span > get_span(*iter, *iter + 1))
-			span = get_span(*iter, *iter + 1);
+	span = abs(*iter - *(iter + 1));
+	while (iter + 1 < copy.end()) {
+		if (span > abs(*iter - *(iter + 1)))
+			span = abs(*iter - *(iter + 1));
 		iter++;
 	}
 	return (span);
@@ -69,5 +62,5 @@ int		Span::longestSpan() const
 	std::vector<int>	copy(this->V);
 
 	std::sort(copy.begin(), copy.end());
-	return (get_span(copy.front(), copy.back()));
+	return (abs(copy.front() - copy.back()));
 }

@@ -38,3 +38,6 @@ re: fclean all
 
 run: $(NAME)
 	./$(NAME)
+
+val: $(NAME)
+	valgrind ./$(NAME)
