@@ -2,16 +2,18 @@
 
 #include <stdexcept>
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 template<typename T>
-int	easyfind(const T container, const int num) throw(std::invalid_argument) {
+int	easyfind(const T container, const int num) {
 
-	for (typename T::const_iterator	i = container.begin(); i != container.end(); i++) {
-		if (*i == num)
-			return (*i);
-	}
-	throw (std::invalid_argument("num is not in the container"));
+	typename T::const_iterator	iter = container.begin();
+
+	iter = std::find(it.begin(), container.end(), num);
+	if (iter == container.end())
+		throw (std::invalid_argument("num is not in the container"));	
+	return (*iter);
 }
 
 template<typename T>

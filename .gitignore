@@ -1,6 +1,8 @@
 # Custom
 objects_and_dependencies
 easyfind
+span
+*.vscode
 
 # Prerequisites
 *.d
