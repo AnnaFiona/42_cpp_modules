@@ -10,7 +10,7 @@ int	easyfind(const T container, const int num) {
 
 	typename T::const_iterator	iter = container.begin();
 
-	iter = std::find(it.begin(), container.end(), num);
+	iter = std::find(container.begin(), container.end(), num);
 	if (iter == container.end())
 		throw (std::invalid_argument("num is not in the container"));	
 	return (*iter);
