@@ -1,11 +1,11 @@
-NAME = easyfind
+NAME = mutant_stack
 
 CXX = c++
 CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
 SRC =	main.cpp
 
-DEP =	easyfind.hpp
+DEP =	MutantStack.hpp MutantStack.tpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)

@@ -1,12 +1,6 @@
 #include <iostream>
 #include "Span.hpp"
 
-/* static void	printVector(const std::vector<int> &v)
-{
-	for (std::vector<int>::const_iterator iter = v.begin(); iter != v.end(); iter++)
-		std::cout << *iter << std::endl;
-	std::cout << std::endl;
-} */
 static void	printSpan(const Span s, const size_t len)
 {
 	for (size_t x = 0; x < len; ++x)

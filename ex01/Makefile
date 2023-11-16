@@ -12,7 +12,7 @@ OBJFILES = $(SRC:.cpp=.o)
 OBJ = $(addprefix $(OBJDIR), $(OBJFILES))
 
 
-.PHONY: clean fclean all re run
+.PHONY: clean fclean all re run val
 
 all: $(NAME)
 
