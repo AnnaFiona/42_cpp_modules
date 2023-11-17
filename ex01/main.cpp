@@ -169,7 +169,7 @@ void	shortestSpan()
 	std::cout << "\033[0;33m///SHORTEST-SPAN///\033[0m" << std::endl;
 	
 	Span	s;
-	s = getRandSpan(10, 100);
+	s = getRandSpan(3, 100);
 	printSpan(s, s.getN());
 	std::cout << s.shortestSpan() << std::endl;
 
@@ -195,7 +195,7 @@ void	longestSpan()
 	std::cout << "\033[0;33m///LONGEST-SPAN///\033[0m" << std::endl;
 	
 	Span	s;
-	s = getRandSpan(10, 100);
+	s = getRandSpan(3, 100);
 	printSpan(s, s.getN());
 	std::cout << s.longestSpan() << std::endl;
 
