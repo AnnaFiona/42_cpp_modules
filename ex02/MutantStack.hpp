@@ -10,11 +10,14 @@ class MutantStack : public std::stack<T>
 public:
 //con- and destructors
 	MutantStack();
-	MutantStack(const MutantStack &M);
-	MutantStack	&operator = (const MutantStack &M);
+	MutantStack(const MutantStack<T, container> &M);
+	MutantStack<T, container>	&operator = (const MutantStack<T, container> &M);
 	~MutantStack();
 
 //methods
+	typedef typename	container::const_iterator	const_iterator;
+	const_iterator	begin() const;
+	const_iterator	end() const;
 	typedef typename	container::iterator	iterator;
 	iterator	begin();
 	iterator	end();
@@ -35,7 +38,11 @@ void	compare_equal(const T a, const T b)
 
 	if (a == b)
 		std::cout << green << "OK" << white << std::endl;
-	else std::cout << red_bold << "FALSE" << white << std::endl;
+	else {
+		std::cout << red_bold << "FALSE" << white << std::endl;
+		std::cout << "a: " << a << std::endl;
+		std::cout << "b: " << b << std::endl;
+	}
 }
 template <typename T>
 void	compare_not_equal(const T a, const T b)
@@ -48,5 +55,9 @@ void	compare_not_equal(const T a, const T b)
 
 	if (a != b)
 		std::cout << green << "OK" << white << std::endl;
-	else std::cout << red_bold << "FALSE" << white << std::endl;
+	else {
+		std::cout << red_bold << "FALSE" << white << std::endl;
+		std::cout << "a: " << a << std::endl;
+		std::cout << "b: " << b << std::endl;
+	}
 }

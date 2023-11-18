@@ -14,6 +14,8 @@ void	copyConstructor()
 	compare_equal<int>(m.top(), copy.top());
 	copy.push(3);
 	compare_not_equal<int>(m.top(), copy.top());
+
+	std::cout << std::endl;
 }
 
 void	assignmentOperator()
@@ -31,11 +33,52 @@ void	assignmentOperator()
 	copy.push(3);
 	m.pop();
 	compare_not_equal<int>(m.top(), copy.top());
+
+	std::cout << std::endl;
+}
+
+/* void	print_stack(const MutantStack<char>	m)
+{
+	for (typename MutantStack<char>::iterator it = m.begin(); it != m.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+} */
+void	print_stack_const(const MutantStack<char>	m)
+{
+	for (typename MutantStack<char>::const_iterator it = m.begin(); it != m.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+}
+void	print_stack_reverse(MutantStack<char>	m)
+{
+	for (typename MutantStack<char>::const_iterator it = m.end() - 1; it >= m.begin(); --it)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+}
+
+
+void	iterators()
+{
+	std::cout << "\033[0;33m///ITERATORS///\033[0m" << std::endl;
+	MutantStack<char>	m;
+	MutantStack<char>::iterator	it = m.begin();
+
+	for (size_t i = 0; i < 10; i++)
+		m.push(static_cast<char>(97 + i));
+
+	for (size_t i = 0; i < 5; i++)
+		it++;
+	compare_equal(*it, 'f');
+	
+	print_stack_const(m);
+	print_stack_reverse(m);
+
+	std::cout << std::endl;
 }
 
 int	main()
 {
 	copyConstructor();
 	assignmentOperator();
-
+	iterators();
 }
