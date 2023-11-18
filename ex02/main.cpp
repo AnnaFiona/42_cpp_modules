@@ -1,5 +1,6 @@
 #include "MutantStack.hpp"
 #include <iostream>
+#include <vector>
 
 
 void	copyConstructor()
@@ -56,7 +57,6 @@ void	print_stack_reverse(MutantStack<char>	m)
 	std::cout << std::endl;
 }
 
-
 void	iterators()
 {
 	std::cout << "\033[0;33m///ITERATORS///\033[0m" << std::endl;
@@ -76,9 +76,26 @@ void	iterators()
 	std::cout << std::endl;
 }
 
+void	vector_stack()
+{
+	std::cout << "\033[0;33m///VECTOR-STACK///\033[0m" << std::endl;
+	MutantStack<int, std::vector<int> >	m;
+
+	for (size_t i = 0; i < 10; i++)
+		m.push(i);
+	for (MutantStack<int, std::vector<int> >::iterator it = m.begin(); it != m.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+	for (MutantStack<int, std::vector<int> >::const_iterator it = m.begin(); it != m.end(); it++)
+		std::cout << *it << ", ";
+
+	std::cout << std::endl;
+}
+
 int	main()
 {
 	copyConstructor();
 	assignmentOperator();
 	iterators();
+	vector_stack();
 }

@@ -3,9 +3,10 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <vector>
 
 template <typename T, typename container = std::deque<T> > 
-class MutantStack : public std::stack<T>
+class MutantStack : public std::stack<T, container>
 {
 public:
 //con- and destructors
