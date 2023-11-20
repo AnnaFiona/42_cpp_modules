@@ -46,13 +46,13 @@ void	assignmentOperator()
 } */
 void	print_stack_const(const MutantStack<char>	m)
 {
-	for (typename MutantStack<char>::const_iterator it = m.begin(); it != m.end(); it++)
+	for (MutantStack<char>::const_iterator it = m.begin(); it != m.end(); it++)
 		std::cout << *it << ", ";
 	std::cout << std::endl;
 }
 void	print_stack_reverse(MutantStack<char>	m)
 {
-	for (typename MutantStack<char>::const_iterator it = m.end() - 1; it >= m.begin(); --it)
+	for (MutantStack<char>::const_iterator it = m.end() - 1; it >= m.begin(); --it)
 		std::cout << *it << ", ";
 	std::cout << std::endl;
 }
@@ -72,6 +72,12 @@ void	iterators()
 	
 	print_stack_const(m);
 	print_stack_reverse(m);
+
+	*it = 'q';
+	compare_not_equal(*it, 'f');
+
+	/* MutantStack<char>::const_iterator cit = m.begin();
+	cit = 4; */
 
 	std::cout << std::endl;
 }
