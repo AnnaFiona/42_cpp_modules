@@ -8,11 +8,17 @@
 
 
 //BitcoinExchange.cpp
-bool	is_valid_date(const int year, const int month, const int day);
-void	check_time(std::string time);
-void	process_line(std::map<std::string, int> &data, std::string line);
-void	get_data(std::map<std::string, int> &data, std::string data_base_name);
+void	process_line(std::map<std::string, float> &data, const std::string line);
+void	get_data(std::map<std::string, float> &data, const std::string data_base_name);
 void	BitcoinExchange(const std::string data_base_name/* , const std::string input_file */);
 
+//BitcoinExchangeChecks.cpp
+void	check_time(const std::string time);
+void	check_value(const std::string value);
+
 //BitcoinExchangeUtils.cpp
-int	stoi(const std::string str);
+int			stoi(const std::string str);
+float		stof(const std::string str);
+std::string	itos(const int i);
+std::string	ftos(const float f);
+bool		is_int(const std::string str);

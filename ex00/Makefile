@@ -3,7 +3,7 @@ NAME = btc
 CXX = c++
 CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
-SRC =	main.cpp BitcoinExchange.cpp BitcoinExchangeUtils.cpp
+SRC =	main.cpp BitcoinExchange.cpp BitcoinExchangeChecks.cpp BitcoinExchangeUtils.cpp
 
 DEP =	BitcoinExchange.hpp
 
