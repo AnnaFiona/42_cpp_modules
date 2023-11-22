@@ -3,9 +3,9 @@ NAME = btc
 CXX = c++
 CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
-SRC =	main.cpp BitcoinExchange.cpp
+SRC =	main.cpp BitcoinExchange.cpp BitcoinExchangeUtils.cpp
 
-DEP =	
+DEP =	BitcoinExchange.hpp
 
 OBJDIR = ./objects_and_dependencies/
 OBJFILES = $(SRC:.cpp=.o)
