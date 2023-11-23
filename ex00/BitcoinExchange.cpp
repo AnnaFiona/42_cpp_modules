@@ -9,17 +9,16 @@ void	process_line(std::map<std::string, float> &data, const std::string line)
 	std::string			end;
 
 	stream >> time;
-	check_time(time);
 	stream >> pipe;
-	if (pipe != "|")
-		throw std::runtime_error("Syntax error in data base: Pipe");
 	stream >> value;
-	check_value(value);
 	stream >> end;
 
-	if (!end.empty())
-		throw std::runtime_error("Syntax error in data base---------");
-	std::cout << time << " | " << value << std::endl;
+	check_time(time);
+	check_value(value);
+	if (pipe != "|" || !end.empty())
+		throw std::runtime_error("Syntax error in line");
+
+	std::cout << time << " | " << stof(value) << std::endl;
 	data[time]=stof(value);
 }
 
@@ -33,7 +32,7 @@ void	get_data(std::map<std::string, float> &data, const std::string data_base_na
 		throw std::runtime_error("Could not open file");
 	while (std::getline(data_base, line))
 	{
-		process_line(data, line); //adds element to data or throws error
+		process_line(data, line); //adds element to map or throws error
 	}
 }
 

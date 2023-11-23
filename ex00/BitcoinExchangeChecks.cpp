@@ -2,8 +2,8 @@
 
 static bool	is_valid_date(const int year, const int month, const int day)
 {
-	std::time_t	now = std::time(0);
-	std::tm	*current_time = std::gmtime(&now);
+	std::time_t	now_t = std::time(0);
+	std::tm	*now = std::gmtime(&now_t);
 	std::tm	time;
 
 	time.tm_gmtoff = 0;
@@ -25,11 +25,11 @@ static bool	is_valid_date(const int year, const int month, const int day)
 		return (false);
 
 	//checks if the date is in the future
-	if (year - 1900 > current_time->tm_year || \
-		(year - 1900 == current_time->tm_year && time.tm_mon > current_time->tm_mon) || \
-		(year - 1900 == current_time->tm_year && time.tm_mon >= current_time->tm_mon && time.tm_mday > current_time->tm_mday)) {
+	if (year - 1900 > now->tm_year || \
+		(year - 1900 == now->tm_year && time.tm_mon > now->tm_mon) || \
+		(year - 1900 == now->tm_year && time.tm_mon >= now->tm_mon && time.tm_mday > now->tm_mday)) {
 			return (false);
-		}
+	}
 	return (true);
 }
 
@@ -54,14 +54,14 @@ void	check_time(const std::string time)
 
 void	check_value(const std::string value)
 {
-	std::string			control_str;
+	//std::string			control_str;
 	float				f;
 
 	f = stof(value);
-	control_str = ftos(f);
-	std::cout << "value:	" << value << "\nf:		" << f << "\ncontrol_str:	" << control_str << std::endl;
+/* 	control_str = ftos(f);
+
 	if (value != control_str)
-		throw std::runtime_error("Wrong value");
-	if (f > 2147483647 || f < -2147483647)
+		throw std::runtime_error("Wrong value"); */
+	if (f < 0.0 || f > 1000.0)
 		throw std::runtime_error("Value out of range");
 }

@@ -40,13 +40,9 @@ std::string	ftos(const float f)
 
 bool	is_int(const std::string str)
 {
-	std::stringstream	stream;
-	std::string			control_str;
-	int					i;
-
-	i = stoi(str);
-	control_str = itos(i);
-	if (str != control_str)
-		return (false);
+	for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
+		if (!std::isdigit(*it))
+			return (false);
+	}
 	return (true);
 }
