@@ -1,6 +1,6 @@
 #include "BitcoinExchange.hpp"
 
-int	stoi(const std::string str)
+int	stoi_(const std::string str)
 {
 	std::stringstream	stream(str);
 	int					i;
@@ -9,7 +9,7 @@ int	stoi(const std::string str)
 	return (i);
 }
 
-float	stof(const std::string str)
+float	stof_(const std::string str)
 {
 	std::stringstream	stream(str);
 	float				f;
@@ -18,7 +18,7 @@ float	stof(const std::string str)
 	return (f);
 }
 
-std::string	itos(const int i)
+std::string	itos_(const int i)
 {
 	std::stringstream	stream;
 	std::string			str;
@@ -28,7 +28,7 @@ std::string	itos(const int i)
 	return (str);
 }
 
-std::string	ftos(const float f)
+std::string	ftos_(const float f)
 {
 	std::stringstream	stream;
 	std::string			str;
@@ -40,9 +40,45 @@ std::string	ftos(const float f)
 
 bool	is_int(const std::string str)
 {
-	for (std::string::const_iterator it = str.begin(); it != str.end(); it++) {
+	std::string::const_iterator it = str.begin();
+
+	if (*it == '-')
+		it++;
+	while (it != str.end())
+	{
 		if (!std::isdigit(*it))
 			return (false);
+		it++;
 	}
+	return (true);
+}
+
+bool	is_float(const std::string str)
+{
+	std::string::const_iterator it = str.begin();
+	bool	digit = false;
+
+	if (*it == '-')
+		it++;
+	while (*it != '.')
+	{
+		digit = true;
+		if (!std::isdigit(*it) || it == str.end())
+			return (false);
+		it++;
+	}
+	if (!digit)
+		return (false);
+	digit = false;
+	it++;
+	while (it != str.end())
+	{
+		digit = true;
+		if (!std::isdigit(*it))
+			return (false);
+		it++;
+	}
+	if (!digit)
+		return (false);
 	return (true);
 }

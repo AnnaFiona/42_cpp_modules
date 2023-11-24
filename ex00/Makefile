@@ -37,7 +37,7 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	./$(NAME)
+	./$(NAME) data_bases/subject.csv
 
 val: $(NAME)
-	valgrind ./$(NAME)
+	valgrind ./$(NAME) data_bases/subject.csv
