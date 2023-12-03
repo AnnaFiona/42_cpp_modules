@@ -54,7 +54,7 @@ void	do_operation(std::stack<int>& stack, const char operant)
 	stack.push(result);
 }
 
-void	RPN(std::string operation)
+void	RPN(const std::string operation)
 {
 	std::stack<int>	stack;
 	std::string::const_iterator	it = operation.begin();
