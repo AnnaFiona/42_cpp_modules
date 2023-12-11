@@ -29,6 +29,11 @@ void	insert_every_second_element(std::vector<int>& main_chain, std::vector<int>&
 	main_chain.insert(main_chain.begin(), v.begin(), v.begin() + element_size);
 }
 
+void	insert_element(std::vector<int> main_chain, std::vector<int>::const_iterator itm_end, std::vector<int>::const_iterator element_end, const int element_size)
+{
+
+}
+
 void	binary_search_insert(std::vector<int>& main_chain, std::vector<int>& v, const int element_size)
 {
 	int	jacobsthal_diff[] =  {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366,
@@ -36,29 +41,30 @@ void	binary_search_insert(std::vector<int>& main_chain, std::vector<int>& v, con
 				1398102, 2796202, 5592406, 11184810, 22369622, 44739242, 89478486,
  				178956970, 357913942, 715827882, 1431655766};
 	int	jd_i = 0;
-	int	diff = 0;
-	std::vector<int>::iterator	itm = main_chain.begin() + (element_size * 3) - 1;
-	std::vector<int>::iterator	itv = v.begin() + element_size - 1;
+	int	itm = (4 * element_size) - 1; //below 4?
+	int	itv;
 
-	while (itv < v.end())
+	while ()
 	{
-		diff = 0;
-			while (diff < jacobsthal_diff[jd_i])
-			{
-				//insert num(main_chain, )
-			}
+		itv = ((jacobsthal_diff[jd_i] * element_size) - 1);
+		if (//uneven)
+		while (itv >= 0)
+		{
+			insert_element(main_chain, main_chain.begin() + itm, v.begin() + itv, element_size);
+			v.erase(v.begin() + (itv - element_size), v.begin() + itv + 1); //?
+			itv--;
+		}
+		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * (element_size)); //element_size - 1?
 		jd_i++;
 	}
 }
 
 void	sort_elements(std::vector<int>& v, const int element_size)
 {
-	std::vector<int>	main_chain;
+	std::vector<int>	main_chain; //initialize with v.size() because of rezising?
 	
-
 	insert_every_second_element(main_chain, v, element_size); //and first element
-	//insert rest of elements using binary search and jacobsthal-number-difference
-
+	binary_search_insert(main_chain, v, element_size);
 	//insert uneven elements from previous recursions at end
 }
 
