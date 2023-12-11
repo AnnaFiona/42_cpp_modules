@@ -30,7 +30,7 @@ $(NAME): $(OBJDIR) $(OBJ)
 
 tests: $(OBJDIR) $(T_OBJ)
 	$(CXX) $(CXXFLAGS) $(T_OBJ) -o tests
-	./tests
+	valgrind ./tests
 
 clean:
 	@rm -rf $(OBJDIR)
