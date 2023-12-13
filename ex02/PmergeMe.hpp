@@ -6,6 +6,9 @@
 #include <vector>
 #include <list>
 
+//PmergeMe.cpp
+void	PmergeMe(const int argc, const char **arr);
+
 //PmergeMeVector.cpp
 void	insert_every_second_element(std::vector<unsigned int>& main_chain, std::vector<unsigned int>& v, const int element_size);
 void	insert_element(std::vector<unsigned int>& main_chain, std::vector<unsigned int>::const_iterator mc_end, std::vector<unsigned int>::const_iterator element_end, const int element_size);

@@ -20,19 +20,18 @@ void	check_array(const char **arr)
 {
 	for (unsigned int i = 1; arr[i]; i++)
 	{
-		if (!is_pos_int())
-			//throw error
-
+		if (!is_unsigned_int(arr[i]))
+			throw (std::invalid_argument("only unsigned ints are accepted"));
 	}
 }
 
 int main(const int argc, const char *argv[])
 {
 	if (argc < 2)
-		//error message
+		std::cout << "Error: there needs to be at least one number" << std::endl;
 	try {
 		check_array(argv); //throws exception
-		PmergeMe(argv); //throws exception
+		PmergeMe(argv); //throws exception (not my functions)
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}

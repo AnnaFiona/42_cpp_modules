@@ -5,7 +5,7 @@
 
 void	print_vector(std::vector<unsigned int> v)
 {
-	for (std::vector<unsigned int>::iterator it = v.begin(); it < v.end(); it++)
+	for (std::vector<unsigned int>::const_iterator it = v.begin(); it < v.end(); it++)
 		std::cout << *it << ", ";
 	std::cout << std::endl;
 }
@@ -84,7 +84,7 @@ void	fjVector()
 	std::cout << std::endl;
 	fj_vector(v, 1);
 	print_vector(v);
-	for (std::vector<unsigned int>::iterator it = v.begin(); it < v.end() - 1; it++)
+	for (std::vector<unsigned int>::const_iterator it = v.begin(); it < v.end() - 1; it++)
 		if (*it > *(it + 1))
 			std::cout << "FAIL" << std::endl;
 	std::cout << "///////////////////////////////////////" << std::endl << std::endl;
