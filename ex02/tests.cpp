@@ -62,15 +62,25 @@ void	sortElements()
 {
 	std::cout << "////////////////sortElements//////////////" << std::endl;
 	std::vector<int>	main_chain; //initialize with v.size() because of rezising?
-	int		arr[] = {2, 4, 3, 8, 5, 7, 1, 11, 9, 12, 6, 10};
+	int		arr[] = {2, 3, 5, 7, 1, 4, 6, 10, 9, 11, 8, 12};
 	std::vector<int>	v(arr, arr + sizeof(arr) / sizeof(int));
 
 	print_vector(v);
-	insert_every_second_element(main_chain, v, 1); //and first element
+	insert_every_second_element(main_chain, v, 2); //and first element
 	print_vector(main_chain);
 	print_vector(v);
-	binary_search_insert(main_chain, v, 1);
+	binary_search_insert(main_chain, v, 2);
 	print_vector(main_chain);
+}
+
+void	fjVector()
+{
+	int		arr[] = {7, 8, 2, 11, 9, 2, 10, 6, 5, 3, 1, 4};
+	std::vector<int>	v(arr, arr + sizeof(arr) / sizeof(int));
+
+	print_vector(v);
+	fj_vector(v, 1);
+	print_vector(v);
 }
 
 int main()
@@ -79,4 +89,5 @@ int main()
 	insertElements();
 	binarySearchInsert();
 	sortElements();
+	fjVector();
 }
