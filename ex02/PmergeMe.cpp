@@ -36,20 +36,25 @@ void	insert_element(std::vector<int>& main_chain, std::vector<int>::const_iterat
 	std::vector<int>::iterator	it;
 
 	std::cout << "mc_end: " << *mc_end << std::endl;
-	std::cout << "length: " << mc_end - mc_begin << std::endl;
+	std::cout << "element_num: " << *element_num << std::endl;
+	std::cout << "length: " << mc_end - mc_begin << std::endl << std::endl;
 	while ((mc_end - mc_begin) / element_size > 1)
 	{
-		it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size - 1;
+		it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size + element_size - 1;
 		std::cout << "it: " << *it << std::endl;
+		std::cout << "mc_end: " << *mc_end << std::endl;
+		std::cout << "mc_begin: " << *mc_begin << std::endl;
+		std::cout << "length: " << mc_end - mc_begin << std::endl << std::endl;
 		if (*element_num >= *it)
-			mc_begin = it;
+			mc_begin = it - element_size + 1;
 		else
-			mc_end = it;		
+			mc_end = it - element_size + 1;		
 	}
-	it = mc_begin + ((mc_end - mc_begin) / 2);
-	if (((mc_end - mc_begin) / element_size) % 2 == 1)
-		it += element_size / 2;
+	it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size + element_size - 1;
 	std::cout << "it2: " << *it << std::endl;
+	std::cout << "mc_end: " << *mc_end << std::endl;
+	std::cout << "mc_begin: " << *mc_begin << std::endl;
+	std::cout << "length: " << mc_end - mc_begin << std::endl << std::endl;
 	if (*element_num >= *it)
 		main_chain.insert(it + 1, element_num - element_size + 1, element_num + 1);
 	else

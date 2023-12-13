@@ -33,14 +33,14 @@ void	print_vector(std::vector<int> v)
 void	insertElements()
 {
 	std::cout << "////////////////insertElements//////////////" << std::endl;
-	int		arrm[] = {1, 3, 5, 6, 8, 9, 0, 11};
+	int		arrm[] = {1, 3, 5, 6, 8, 9, 0, 11, 12};
 	std::vector<int>	main_chain(arrm, arrm + sizeof(arrm) / sizeof(int));
-	int		arr[] = {2, 4};
+	int		arr[] = {2, 7};
 	std::vector<int>	v(arr, arr + sizeof(arr) / sizeof(int));
 
 	print_vector(v);
 	print_vector(main_chain);
-	insert_element(main_chain, main_chain.end() - 2, v.end() - 1, 2);
+	insert_element(main_chain, main_chain.end() - 5, v.end() - 1, 1);
 	print_vector(main_chain);
 
 	std::cout << "///////////////////////////////////////" << std::endl << std::endl;
