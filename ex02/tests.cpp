@@ -76,13 +76,17 @@ void	sortElements()
 
 void	fjVector()
 {
-	std::cout << "///////////////fjVector///////////////" << std::endl;
-	unsigned int		arr[] = {7, 8, 4, 11, 9, 2, 10, 6, 5, 3, 1, 12};
+	std::cout << "///////////////fjVector////////////////" << std::endl;
+	unsigned int		arr[] = {14, 97, 92, 75, 98, 46, 94, 89, 22, 15, 52, 90, 74, 55, 58, 100, 65, 27, 62, 86, 78, 82, 59, 53, 25, 96, 38, 13, 67, 54, 36, 72, 60, 93, 10, 64, 42, 16, 44, 17, 26, 2, 87, 21, 6, 9, 31, 5, 11, 32, 79, 83, 0, 73, 24, 12, 76, 71, 50, 34, 41, 81, 1, 70, 69, 61, 99, 68, 48, 20, 88, 91, 85, 29, 66, 19, 95, 28, 30, 3, 43, 4, 33, 56, 40, 47, 77, 35, 8, 39, 18, 80, 45, 23, 84, 63, 7, 49, 37, 57}; //100
 	std::vector<unsigned int>	v(arr, arr + sizeof(arr) / sizeof(unsigned int));
 
 	print_vector(v);
+	std::cout << std::endl;
 	fj_vector(v, 1);
 	print_vector(v);
+	for (std::vector<unsigned int>::iterator it = v.begin(); it < v.end() - 1; it++)
+		if (*it > *(it + 1))
+			std::cout << "FAIL" << std::endl;
 	std::cout << "///////////////////////////////////////" << std::endl << std::endl;
 }
 

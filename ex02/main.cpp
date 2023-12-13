@@ -1,10 +1,29 @@
 #include "PmergeMe.hpp"
 
+bool	is_unsigned_int(const std::string str)
+{
+	std::stringstream	stream;
+	std::string			cntrl_str;
+	unsigned int		u;
+
+	stream << str;
+	stream >> u;
+	stream.clear();
+	stream << u;
+	stream >> cntrl_str;
+	if (cntrl_str != str)
+		return (false);
+	return (true);
+}
+
 void	check_array(const char **arr)
 {
-	loop (arr)
+	for (unsigned int i = 1; arr[i]; i++)
+	{
 		if (!is_pos_int())
 			//throw error
+
+	}
 }
 
 int main(const int argc, const char *argv[])
