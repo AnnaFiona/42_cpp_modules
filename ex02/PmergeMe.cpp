@@ -27,6 +27,7 @@ void	insert_every_second_element(std::vector<int>& main_chain, std::vector<int>&
 		itv += (element_size * 2) - 1;
 	}
 	main_chain.insert(main_chain.begin(), v.begin(), v.begin() + element_size);
+	v.erase(v.begin(), v.begin() + element_size);
 }
 
 //this is actually binary search
@@ -35,33 +36,22 @@ void	insert_element(std::vector<int>& main_chain, std::vector<int>::const_iterat
 	std::vector<int>::iterator	mc_begin = main_chain.begin();
 	std::vector<int>::iterator	it;
 
-	std::cout << "mc_end: " << *mc_end << std::endl;
-	std::cout << "element_num: " << *element_num << std::endl;
-	std::cout << "length: " << mc_end - mc_begin << std::endl << std::endl;
 	while ((mc_end - mc_begin) / element_size > 1)
 	{
 		it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size + element_size - 1;
-		std::cout << "it: " << *it << std::endl;
-		std::cout << "mc_end: " << *mc_end << std::endl;
-		std::cout << "mc_begin: " << *mc_begin << std::endl;
-		std::cout << "length: " << mc_end - mc_begin << std::endl << std::endl;
 		if (*element_num >= *it)
 			mc_begin = it - element_size + 1;
 		else
 			mc_end = it - element_size + 1;		
 	}
 	it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size + element_size - 1;
-	std::cout << "it2: " << *it << std::endl;
-	std::cout << "mc_end: " << *mc_end << std::endl;
-	std::cout << "mc_begin: " << *mc_begin << std::endl;
-	std::cout << "length: " << mc_end - mc_begin << std::endl << std::endl;
 	if (*element_num >= *it)
 		main_chain.insert(it + 1, element_num - element_size + 1, element_num + 1);
 	else
 		main_chain.insert(it - element_size + 1, element_num - element_size + 1, element_num + 1);
 }
 
-/* void	binary_search_insert(std::vector<int>& main_chain, std::vector<int>& v, const int element_size)
+void	binary_search_insert(std::vector<int>& main_chain, std::vector<int>& v, const int element_size)
 {
 	int	jacobsthal_diff[] =  {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366,
 				2730, 5462, 10922, 21846, 43690, 87382, 174762, 349526, 699050,
@@ -71,29 +61,38 @@ void	insert_element(std::vector<int>& main_chain, std::vector<int>::const_iterat
 	int	itm = (4 * element_size) - 1; //below 4?
 	int	itv;
 
-	while ()
+	while (static_cast<int>(v.size()) >= element_size)
 	{
-		itv = ((jacobsthal_diff[jd_i] * element_size) - 1);
-		if (//uneven)
+		itv = (jacobsthal_diff[jd_i] * element_size) - 1;
+		if (itv > static_cast<int>(v.size()))
+			itv = v.size() - (v.size() % element_size); //% element_size in case there are leftover numbers (uneven pairs) from previous recursion
 		while (itv >= 0)
 		{
+			/* std::cout << "itv: " << itv << std::endl;
+			std::cout << "itm: " << itm << std::endl;
+			std::cout << "itv v: " << *(v.begin() + itv) << std::endl;
+			std::cout << "itm m: " << *(main_chain.begin() + itm - element_size + 1) << std::endl << std::endl; */
 			insert_element(main_chain, main_chain.begin() + itm - element_size + 1, v.begin() + itv, element_size);
-			v.erase(v.begin() + (itv - element_size), v.begin() + itv + 1); //?
+			v.erase(v.begin() + itv - element_size + 1, v.begin() + itv + 1);
 			itv--;
 		}
-		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * (element_size)); //element_size - 1?
+		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * element_size); //element_size - 1?
 		jd_i++;
 	}
-} */
+}
 
-/* void	sort_elements(std::vector<int>& v, const int element_size)
+void	sort_elements(std::vector<int>& v, const int element_size)
 {
 	std::vector<int>	main_chain; //initialize with v.size() because of rezising?
 	
 	insert_every_second_element(main_chain, v, element_size); //and first element
 	binary_search_insert(main_chain, v, element_size);
-	//insert uneven elements from previous recursions at end
-} */
+	while (!v.empty())
+	{
+		main_chain.push_back(*v.begin());
+		v.erase(v.begin());
+	}
+}
 
 //Ford-Johnson algorithm (also called merge-insertion sort)
 /* void	fj_vector(std::vector<int>& v, int element_size)
