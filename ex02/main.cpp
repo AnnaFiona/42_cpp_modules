@@ -8,6 +8,7 @@ bool	is_unsigned_int(const std::string str)
 
 	stream << str;
 	stream >> u;
+	stream.str("");
 	stream.clear();
 	stream << u;
 	stream >> cntrl_str;
@@ -28,10 +29,13 @@ void	check_array(const char **arr)
 int main(const int argc, const char *argv[])
 {
 	if (argc < 2)
+	{
 		std::cout << "Error: there needs to be at least one number" << std::endl;
+		return 0;
+	}
 	try {
 		check_array(argv); //throws exception
-		PmergeMe(argv); //throws exception (not my functions)
+		PmergeMe(argc, argv); //throws exception (not my functions)
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}
