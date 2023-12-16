@@ -44,7 +44,7 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	./$(NAME)
+	./$(NAME) 12 4 9 2 10 3 11 5 8 1 7 6
 
 val: $(NAME)
 	valgrind ./$(NAME) 12 4 9 2 10 3 11 5 8 1 7 6

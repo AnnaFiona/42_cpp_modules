@@ -24,7 +24,7 @@ void	fill_vector(std::vector<unsigned int>& v, const char **arr)
 	}
 }
 
-std::time_t	get_time()
+/* std::time_t	get_time()
 {
 	std::time_t	now;
 	
@@ -32,6 +32,15 @@ std::time_t	get_time()
 	if (now == -1)
 		throw (std::runtime_error("could not get time"));
 	return (now);
+} */
+
+int	get_time()
+{
+	struct timeval	now;
+
+	if (gettimeofday(&now, NULL) == - 1)
+		throw (std::runtime_error("could not get time"));
+	return (now.tv_usec);
 }
 
 void	PmergeMe(const int argc, const char **arr)
@@ -39,8 +48,8 @@ void	PmergeMe(const int argc, const char **arr)
 	std::vector<unsigned int>	v;
 	v.resize(argc - 1);
 	//other container
-	std::time_t		before_t;
-	std::time_t		after_t;
+	int	before_t;
+	int	after_t;
 
 	fill_vector(v, arr);
 	print_vector(v, "unsorted: "); //template function
@@ -48,7 +57,7 @@ void	PmergeMe(const int argc, const char **arr)
 	fj_vector(v, 1);
 	after_t = get_time();
 	print_vector(v, "sorted: "); //sorted
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector:	" << before_t - after_t << std::endl; //time doesn't work
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector:	" << after_t - before_t << " microseconds" << std::endl; //time doesn't work
 //	get_time();
 	//do algorithm with list
 //	get_time();
