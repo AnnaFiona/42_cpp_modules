@@ -90,11 +90,28 @@ void	fjVector()
 	std::cout << "///////////////////////////////////////" << std::endl << std::endl;
 }
 
+std::list<unsigned int>::const_iterator	add_const_it(std::list<unsigned>::const_iterator it, int add)
+{
+	for (int i = 0; i < add; i++)
+		it++;
+	return (it);
+}
+
 int main()
 {
-	sortPairs();
+	/* sortPairs();
 	insertElements();
 	binarySearchInsert();
 	sortElements();
-	fjVector();
+	fjVector(); */
+
+	unsigned int		arr[] = {2, 3, 5, 7, 1, 4, 6, 10, 9, 11, 8, 12};
+	std::vector<unsigned int>	v(arr, arr + sizeof(arr) / sizeof(unsigned int));
+	std::list<unsigned int>	l;
+	l.insert(l.begin(), v.begin(), v.end());
+	std::list<unsigned int>::const_iterator it = l.begin();
+	for (int i = 2; add_const_it(it, i) != l.end(); i++)
+		std::cout << *add_const_it(it, i) << ", ";
+	std::cout << std::endl;
+
 }

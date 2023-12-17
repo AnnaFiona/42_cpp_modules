@@ -3,8 +3,8 @@ NAME = PmergeMe
 CXX = c++
 CXXFLAGS = -g -Wall -Werror -Wextra -std=c++98
 
-SRC =	main.cpp PmergeMe.cpp PmergeMeVector.cpp
-T_SRC = tests.cpp PmergeMe.cpp PmergeMeVector.cpp
+SRC =	main.cpp PmergeMe.cpp PmergeMeList.cpp PmergeMeVector.cpp
+T_SRC = tests.cpp PmergeMe.cpp PmergeMeList.cpp PmergeMeVector.cpp
 
 DEP =	PmergeMe.hpp
 
