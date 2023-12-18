@@ -1,15 +1,15 @@
 #include "PmergeMe.hpp"
 
-void	print_vector(std::vector<unsigned int> v, const std::string explicit_message)
+void	print_vector(std::vector<unsigned> v, const std::string explicit_message)
 {
 	if (!explicit_message.empty())
 		std::cout << explicit_message << " ";
-	for (std::vector<unsigned int>::const_iterator it = v.begin(); it < v.end(); it++)
+	for (std::vector<unsigned>::const_iterator it = v.begin(); it < v.end(); it++)
 		std::cout << *it << ", ";
 	std::cout << std::endl;
 }
 
-void	fill_vector(std::vector<unsigned int>& v, const char **arr)
+void	fill_vector(std::vector<unsigned>& v, const char **arr)
 {
 	std::stringstream	stream;
 	unsigned int		u;
@@ -24,6 +24,21 @@ void	fill_vector(std::vector<unsigned int>& v, const char **arr)
 	}
 }
 
+void	fill_list(std::list<unsigned>& l, const char **arr)
+{
+	std::stringstream	stream;
+	unsigned int		u;
+
+	for (int i = 1; arr[i]; i++)
+	{
+		stream << arr[i];
+		stream >> u;
+		l.push_back(u);
+		stream.str("");
+		stream.clear();
+	}
+}
+
 int	get_time()
 {
 	struct timeval	now;
@@ -33,23 +48,34 @@ int	get_time()
 	return (now.tv_usec);
 }
 
+void	print_list(std::list<unsigned> l, const std::string explicit_message)
+{
+	if (!explicit_message.empty())
+		std::cout << explicit_message << " ";
+	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+}
+
 void	PmergeMe(const int argc, const char **arr)
 {
-	std::vector<unsigned int>	v;
+	std::vector<unsigned>	v;
 	v.resize(argc - 1);
-	//other container
+	std::list<unsigned>		l;
 	int	before_t;
 	int	after_t;
 
-	fill_vector(v, arr);
-	print_vector(v, "unsorted: "); //template function
+	fill_vector(v, arr); //swap!!!!
+	print_vector(v, "unsorted: "); //swap!!!!
 	before_t = get_time();
 	fj_vector(v, 1);
 	after_t = get_time();
-	print_vector(v, "sorted: "); //sorted
+	print_vector(v, "sorted: ");
 	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector:	" << after_t - before_t << " microseconds" << std::endl;
-//	get_time();
-	//do algorithm with list
-//	get_time();
-	//print time other container
+	before_t = get_time();
+	fill_list(l, arr);
+	fj_list(l, 1);
+	after_t = get_time();
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:		" << after_t - before_t << " microseconds" << std::endl;
+	print_list(l, "list: ");
 }

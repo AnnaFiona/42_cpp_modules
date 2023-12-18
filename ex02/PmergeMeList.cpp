@@ -1,58 +1,72 @@
 #include "PmergeMe.hpp"
 
-/* void	sort_pairs(std::vector<unsigned int>& v, const int element_size) //should work
-{
-	std::vector<unsigned int>::iterator it = v.begin() + element_size - 1;
-	int		uneven = v.size() % element_size; //in case one of the last recursions were uneven
 
-	if (((v.size() - uneven) / element_size) % 2 == 1)
+/* static void	print_list(std::list<unsigned> l)
+{
+	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+} */
+
+
+void	sort_pairs(std::list<unsigned>& l, const int element_size)
+{
+	std::list<unsigned>::iterator it = add_it(l.begin(), element_size - 1);
+	int		uneven = l.size() % element_size; //in case one of the last recursions were uneven
+
+	if (((l.size() - uneven) / element_size) % 2 == 1)
 		uneven += element_size; //in case this recursion is uneven
-	while (it < v.end() - uneven) //uneven is there so it doesn't go too far and tries to compare stuff in case it's uneven or one of the last recursions were uneven
+	while (it != subtract_it(l.end(), uneven)) //uneven is there so it doesn't go too far and tries to compare stuff in case it's uneven or one of the last recursions were uneven
 	{
-		if (*it > *(it + element_size))
-			std::swap_ranges(it - element_size + 1, it + 1, it + 1);
-		it += element_size * 2;
+		if (*it > *add_it(it, element_size))
+			std::swap_ranges(subtract_it(it, element_size - 1), add_it(it, 1), add_it(it, 1));
+		for (int i = 0; i < element_size * 2; i++)
+			if (++it == subtract_it(l.end(), uneven))
+				break ;
 	}
 }
 
-void	insert_every_second_element(std::vector<unsigned int>& main_chain, std::vector<unsigned int>& v, const int element_size)
+void	insert_every_second_element(std::list<unsigned>& main_chain, std::list<unsigned>& l, const int element_size)
 {
-	std::vector<unsigned int>::iterator	itv = v.begin() + (element_size * 2) - 1;
+	std::list<unsigned>::iterator	itv = add_it(l.begin(), (element_size * 2) - 1);
 
-	while (itv < v.end())
+	while (itv != l.end())
 	{
-		main_chain.insert(main_chain.end(), itv - element_size + 1, itv + 1);
-		itv = v.erase(itv - element_size + 1, itv + 1);
-		itv += (element_size * 2) - 1;
+		main_chain.insert(main_chain.end(), subtract_it(itv, element_size - 1), add_it(itv, 1));
+		itv = l.erase(subtract_it(itv, element_size - 1), add_it(itv, 1));
+		//itv = add_it(itv, (element_size * 2) - 1);
+		for (int i = 0; i < (element_size * 2) - 1; i++)
+			if (++itv == l.end())
+				break ;
 	}
-	main_chain.insert(main_chain.begin(), v.begin(), v.begin() + element_size);
-	v.erase(v.begin(), v.begin() + element_size);
+	main_chain.insert(main_chain.begin(), l.begin(), add_it(l.begin(), element_size));
+	l.erase(l.begin(), add_it(l.begin(), element_size));
 }
 
 //this is actually binary search
-void	insert_element(std::vector<unsigned int>& main_chain, std::vector<unsigned int>::const_iterator mc_end, std::vector<unsigned int>::const_iterator element_num, const int element_size)
+void	insert_element(std::list<unsigned>& main_chain, std::list<unsigned>::const_iterator mc_end, std::list<unsigned>::const_iterator element_num, const int element_size)
 {
-	std::vector<unsigned int>::iterator	mc_begin = main_chain.begin();
-	std::vector<unsigned int>::iterator	it;
+	std::list<unsigned>::iterator	mc_begin = main_chain.begin();
+	std::list<unsigned>::iterator	it;
 
-	while ((mc_end - mc_begin) / element_size > 1)
+	while (get_working_size(mc_begin, mc_end) / element_size > 1)
 	{
-		it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size + element_size - 1;
+		it = add_it(mc_begin, ((get_working_size(mc_begin, mc_end) / element_size) / 2) * element_size + element_size - 1);
 		if (*element_num >= *it)
-			mc_begin = it - element_size + 1;
+			mc_begin = subtract_it(it, element_size - 1);
 		else
-			mc_end = it - element_size + 1;	
+			mc_end = subtract_it(it, element_size - 1);	
 	}
-	it = mc_begin + (((mc_end - mc_begin) / element_size) / 2) * element_size + element_size - 1;
+	it = add_it(mc_begin, ((get_working_size(mc_begin, mc_end) / element_size) / 2) * element_size + element_size - 1);
 	if (*element_num >= *it)
-		main_chain.insert(it + 1, element_num - element_size + 1, element_num + 1);
+		main_chain.insert(add_it(it, 1), subtract_it(element_num, element_size - 1), add_it(element_num, 1));
 	else
-		main_chain.insert(it - element_size + 1, element_num - element_size + 1, element_num + 1);
+		main_chain.insert(subtract_it(it, element_size - 1), subtract_it(element_num, element_size - 1), add_it(element_num, 1));
 }
 
-void	binary_search_insert(std::vector<unsigned int>& main_chain, std::vector<unsigned int>& v, const int element_size)
+void	binary_search_insert(std::list<unsigned>& main_chain, std::list<unsigned>& l, const int element_size)
 {
-	unsigned int	jacobsthal_diff[] =  {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366,
+	unsigned	jacobsthal_diff[] =  {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366,
 				2730, 5462, 10922, 21846, 43690, 87382, 174762, 349526, 699050,
 				1398102, 2796202, 5592406, 11184810, 22369622, 44739242, 89478486,
  				178956970, 357913942, 715827882, 1431655766, 2863311530};
@@ -60,18 +74,18 @@ void	binary_search_insert(std::vector<unsigned int>& main_chain, std::vector<uns
 	int	itm = (4 * element_size) - 1;
 	int	itv;
 
-	while (static_cast<int>(v.size()) >= element_size)
+	while (static_cast<int>(l.size()) >= element_size)
 	{
 		itv = (jacobsthal_diff[jd_i] * element_size) - 1;
-		if (itv >= static_cast<int>(v.size()) || jd_i >= 32)
+		if (itv >= static_cast<int>(l.size()) || jd_i >= 32)
 		{
-			itv = v.size() - 1 - (v.size() % element_size); //% element_size in case there are leftover numbers (uneven pairs) from previous recursion
+			itv = l.size() - 1 - (l.size() % element_size); //% element_size in case there are leftover numbers (uneven pairs) from previous recursion
 			itm = main_chain.size() + element_size - 1;
 		}
 		while (itv >= 0)
 		{
-			insert_element(main_chain, main_chain.begin() + itm - element_size + 1, v.begin() + itv, element_size);
-			v.erase(v.begin() + itv - element_size + 1, v.begin() + itv + 1);
+			insert_element(main_chain, add_it(main_chain.begin(), itm - element_size + 1), add_it(l.begin(), itv), element_size);
+			l.erase(add_it(l.begin(), itv - element_size + 1), add_it(l.begin(), itv + 1));
 			itv -= element_size;
 		}
 		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * element_size);
@@ -79,31 +93,27 @@ void	binary_search_insert(std::vector<unsigned int>& main_chain, std::vector<uns
 	}
 }
 
-void	sort_elements(std::vector<unsigned int>& v, const int element_size)
+void	sort_elements(std::list<unsigned>& l, const int element_size)
 {
-	std::vector<unsigned int>	main_chain;
-	main_chain.reserve(v.size());
+	std::list<unsigned>	main_chain;
 	
-	insert_every_second_element(main_chain, v, element_size); //and first element
-	binary_search_insert(main_chain, v, element_size);
-	while (!v.empty())
+	insert_every_second_element(main_chain, l, element_size); //and first element
+	binary_search_insert(main_chain, l, element_size);
+	while (!l.empty())
 	{
-		main_chain.push_back(*v.begin());
-		v.erase(v.begin());
+		main_chain.push_back(*l.begin());
+		l.erase(l.begin());
 	}
-	v = main_chain;
+	l = main_chain;
 }
-
-
 
 //Ford-Johnson algorithm (also called merge-insertion sort)
-void	fj_list(std::vector<unsigned int>& v, int element_size)
+void	fj_list(std::list<unsigned>& l, int element_size)
 {
-	sort_pairs(v, element_size);
-	if (v.size() / element_size > 2)
-		fj_vector(v, element_size * 2);
+	sort_pairs(l, element_size);
+	if (l.size() / element_size > 2)
+		fj_list(l, element_size * 2);
 	else
 		return ;
-	sort_elements(v, element_size);
+	sort_elements(l, element_size);
 }
- */

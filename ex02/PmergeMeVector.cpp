@@ -1,8 +1,8 @@
 #include "PmergeMe.hpp"
 
-void	sort_pairs(std::vector<unsigned int>& v, const int element_size) //should work
+void	sort_pairs(std::vector<unsigned>& v, const int element_size)
 {
-	std::vector<unsigned int>::iterator it = v.begin() + element_size - 1;
+	std::vector<unsigned>::iterator it = v.begin() + element_size - 1;
 	int		uneven = v.size() % element_size; //in case one of the last recursions were uneven
 
 	if (((v.size() - uneven) / element_size) % 2 == 1)
@@ -15,9 +15,9 @@ void	sort_pairs(std::vector<unsigned int>& v, const int element_size) //should w
 	}
 }
 
-void	insert_every_second_element(std::vector<unsigned int>& main_chain, std::vector<unsigned int>& v, const int element_size)
+void	insert_every_second_element(std::vector<unsigned>& main_chain, std::vector<unsigned>& v, const int element_size)
 {
-	std::vector<unsigned int>::iterator	itv = v.begin() + (element_size * 2) - 1;
+	std::vector<unsigned>::iterator	itv = v.begin() + (element_size * 2) - 1;
 
 	while (itv < v.end())
 	{
@@ -30,10 +30,10 @@ void	insert_every_second_element(std::vector<unsigned int>& main_chain, std::vec
 }
 
 //this is actually binary search
-void	insert_element(std::vector<unsigned int>& main_chain, std::vector<unsigned int>::const_iterator mc_end, std::vector<unsigned int>::const_iterator element_num, const int element_size)
+void	insert_element(std::vector<unsigned>& main_chain, std::vector<unsigned>::const_iterator mc_end, std::vector<unsigned>::const_iterator element_num, const int element_size)
 {
-	std::vector<unsigned int>::iterator	mc_begin = main_chain.begin();
-	std::vector<unsigned int>::iterator	it;
+	std::vector<unsigned>::iterator	mc_begin = main_chain.begin();
+	std::vector<unsigned>::iterator	it;
 
 	while ((mc_end - mc_begin) / element_size > 1)
 	{
@@ -50,9 +50,9 @@ void	insert_element(std::vector<unsigned int>& main_chain, std::vector<unsigned 
 		main_chain.insert(it - element_size + 1, element_num - element_size + 1, element_num + 1);
 }
 
-void	binary_search_insert(std::vector<unsigned int>& main_chain, std::vector<unsigned int>& v, const int element_size)
+void	binary_search_insert(std::vector<unsigned>& main_chain, std::vector<unsigned>& v, const int element_size)
 {
-	unsigned int	jacobsthal_diff[] =  {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366,
+	unsigned	jacobsthal_diff[] =  {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366,
 				2730, 5462, 10922, 21846, 43690, 87382, 174762, 349526, 699050,
 				1398102, 2796202, 5592406, 11184810, 22369622, 44739242, 89478486,
  				178956970, 357913942, 715827882, 1431655766, 2863311530};
@@ -79,9 +79,9 @@ void	binary_search_insert(std::vector<unsigned int>& main_chain, std::vector<uns
 	}
 }
 
-void	sort_elements(std::vector<unsigned int>& v, const int element_size)
+void	sort_elements(std::vector<unsigned>& v, const int element_size)
 {
-	std::vector<unsigned int>	main_chain;
+	std::vector<unsigned>	main_chain;
 	main_chain.reserve(v.size());
 	
 	insert_every_second_element(main_chain, v, element_size); //and first element
@@ -95,7 +95,7 @@ void	sort_elements(std::vector<unsigned int>& v, const int element_size)
 }
 
 //Ford-Johnson algorithm (also called merge-insertion sort)
-void	fj_vector(std::vector<unsigned int>& v, int element_size)
+void	fj_vector(std::vector<unsigned>& v, int element_size)
 {
 	sort_pairs(v, element_size);
 	if (v.size() / element_size > 2)
