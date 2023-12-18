@@ -9,8 +9,6 @@
 #include <list>
 
 //PmergeMe.cpp
-void	print_vector(std::vector<unsigned> v, const std::string explicit_message);
-void	print_list(std::list<unsigned> l, const std::string explicit_message);
 void	PmergeMe(const int argc, const char **arr);
 
 //PmergeMeList.cpp

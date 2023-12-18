@@ -26,8 +26,6 @@ void	insert_every_second_element(std::list<unsigned>& main_chain, std::list<unsi
 
 	while (itl != l.end())
 	{
-		/* main_chain.insert(main_chain.end(), subtract_it(itl, element_size - 1), add_it(itl, 1));
-		itl = l.erase(subtract_it(itl, element_size - 1), add_it(itl, 1)); */
 		temp = add_it(itl, 1);
 		main_chain.splice(main_chain.end(), l, subtract_it(itl, element_size - 1), temp);
 		itl = temp;
@@ -38,8 +36,6 @@ void	insert_every_second_element(std::list<unsigned>& main_chain, std::list<unsi
 			itl++;
 		}
 	}
-	/* main_chain.insert(main_chain.begin(), l.begin(), add_it(l.begin(), element_size));
-	l.erase(l.begin(), add_it(l.begin(), element_size)); */
 	main_chain.splice(main_chain.begin(), l, l.begin(), add_it(l.begin(), element_size));
 }
 
@@ -88,8 +84,6 @@ void	binary_search_insert(std::list<unsigned>& main_chain, std::list<unsigned>& 
 			l.erase(add_it(l.begin(), itl - element_size + 1), add_it(l.begin(), itl + 1));
 			itl -= element_size;
 		}
-		print_list(main_chain, "		m: ");
-		print_list(l, "		l: ");
 		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * element_size);
 		jd_i++;
 	}
@@ -113,13 +107,7 @@ void	sort_elements(std::list<unsigned>& l, const int element_size)
 void	fj_list(std::list<unsigned>& l, int element_size)
 {
 	sort_pairs(l, element_size);
-	std::cout << element_size;
-	print_list(l, "blist: ");
-	if (size(l) / element_size > 2) // * 2?
+	if (size(l) / (element_size * 2) > 2)
 		fj_list(l, element_size * 2);
-	else
-		return ;
 	sort_elements(l, element_size);
-	std::cout << element_size;
-	print_list(l, "list: ");
 }

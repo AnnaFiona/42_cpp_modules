@@ -1,12 +1,25 @@
 #include "PmergeMe.hpp"
 
-void	print_vector(std::vector<unsigned> v, const std::string explicit_message)
+void	print_arr(const char **arr, const std::string explicit_message)
 {
+	size_t i = 1;
+
 	if (!explicit_message.empty())
 		std::cout << explicit_message << " ";
-	for (std::vector<unsigned>::const_iterator it = v.begin(); it < v.end(); it++)
-		std::cout << *it << ", ";
-	std::cout << std::endl;
+	while (arr[i + 1])
+		std::cout << arr[i++] << ", ";
+	std::cout << arr[i] << std::endl;
+}
+
+void	print_vector(std::vector<unsigned> v, const std::string explicit_message)
+{
+	std::vector<unsigned>::const_iterator it = v.begin();
+
+	if (!explicit_message.empty())
+		std::cout << explicit_message << " ";
+	while ( it < v.end() - 1)
+		std::cout << *it++ << ", ";
+	std::cout << *it << std::endl;
 }
 
 void	print_list(std::list<unsigned> l, const std::string explicit_message)
@@ -65,17 +78,17 @@ void	PmergeMe(const int argc, const char **arr)
 	int	before_t;
 	int	after_t;
 
-	fill_vector(v, arr); //swap!!!!
-	print_vector(v, "unsorted: "); //swap!!!!
+	print_arr(arr, "unsorted: ");
 	before_t = get_time();
+	fill_vector(v, arr);
 	fj_vector(v, 1);
 	after_t = get_time();
 	print_vector(v, "sorted: ");
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector:	" << after_t - before_t << " microseconds" << std::endl;
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " << after_t - before_t << " microseconds" << std::endl;
 	before_t = get_time();
 	fill_list(l, arr);
 	fj_list(l, 1);
 	after_t = get_time();
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:		" << after_t - before_t << " microseconds" << std::endl;
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:   " << after_t - before_t << " microseconds" << std::endl;
 	print_list(l, "list: ");
 }
