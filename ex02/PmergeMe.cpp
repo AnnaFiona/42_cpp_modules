@@ -1,5 +1,14 @@
 #include "PmergeMe.hpp"
 
+/* void	print_list(std::list<unsigned> l, const std::string explicit_message)
+{
+	if (!explicit_message.empty())
+		std::cout << explicit_message << " ";
+	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+} */
+
 void	print_arr(const char **arr, const std::string explicit_message)
 {
 	size_t i = 1;
@@ -20,15 +29,6 @@ void	print_vector(std::vector<unsigned> v, const std::string explicit_message)
 	while ( it < v.end() - 1)
 		std::cout << *it++ << ", ";
 	std::cout << *it << std::endl;
-}
-
-void	print_list(std::list<unsigned> l, const std::string explicit_message)
-{
-	if (!explicit_message.empty())
-		std::cout << explicit_message << " ";
-	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
-		std::cout << *it << ", ";
-	std::cout << std::endl;
 }
 
 void	fill_vector(std::vector<unsigned>& v, const char **arr)
@@ -90,5 +90,4 @@ void	PmergeMe(const int argc, const char **arr)
 	fj_list(l, 1);
 	after_t = get_time();
 	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:   " << after_t - before_t << " microseconds" << std::endl;
-	print_list(l, "list: ");
 }
