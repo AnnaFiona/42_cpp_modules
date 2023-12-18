@@ -1,20 +1,13 @@
 #include "PmergeMe.hpp"
 
-
-/* static void	print_list(std::list<unsigned> l)
-{
-	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
-		std::cout << *it << ", ";
-	std::cout << std::endl;
-} */
-
-
 void	sort_pairs(std::list<unsigned>& l, const int element_size)
 {
 	std::list<unsigned>::iterator it = add_it(l.begin(), element_size - 1);
-	int		uneven = l.size() % element_size; //in case one of the last recursions were uneven
+	int		uneven = size(l) % element_size; //in case one of the last recursions were uneven
 
-	if (((l.size() - uneven) / element_size) % 2 == 1)
+	if (size(l) / element_size < 2)
+		return ;
+	if (((size(l) - uneven) / element_size) % 2 == 1)
 		uneven += element_size; //in case this recursion is uneven
 	while (it != subtract_it(l.end(), uneven)) //uneven is there so it doesn't go too far and tries to compare stuff in case it's uneven or one of the last recursions were uneven
 	{
@@ -28,19 +21,26 @@ void	sort_pairs(std::list<unsigned>& l, const int element_size)
 
 void	insert_every_second_element(std::list<unsigned>& main_chain, std::list<unsigned>& l, const int element_size)
 {
-	std::list<unsigned>::iterator	itv = add_it(l.begin(), (element_size * 2) - 1);
+	std::list<unsigned>::iterator	itl = add_it(l.begin(), (element_size * 2) - 1);
+	std::list<unsigned>::iterator	temp;
 
-	while (itv != l.end())
+	while (itl != l.end())
 	{
-		main_chain.insert(main_chain.end(), subtract_it(itv, element_size - 1), add_it(itv, 1));
-		itv = l.erase(subtract_it(itv, element_size - 1), add_it(itv, 1));
-		//itv = add_it(itv, (element_size * 2) - 1);
+		/* main_chain.insert(main_chain.end(), subtract_it(itl, element_size - 1), add_it(itl, 1));
+		itl = l.erase(subtract_it(itl, element_size - 1), add_it(itl, 1)); */
+		temp = add_it(itl, 1);
+		main_chain.splice(main_chain.end(), l, subtract_it(itl, element_size - 1), temp);
+		itl = temp;
 		for (int i = 0; i < (element_size * 2) - 1; i++)
-			if (++itv == l.end())
+		{
+			if (itl == l.end())
 				break ;
+			itl++;
+		}
 	}
-	main_chain.insert(main_chain.begin(), l.begin(), add_it(l.begin(), element_size));
-	l.erase(l.begin(), add_it(l.begin(), element_size));
+	/* main_chain.insert(main_chain.begin(), l.begin(), add_it(l.begin(), element_size));
+	l.erase(l.begin(), add_it(l.begin(), element_size)); */
+	main_chain.splice(main_chain.begin(), l, l.begin(), add_it(l.begin(), element_size));
 }
 
 //this is actually binary search
@@ -72,22 +72,24 @@ void	binary_search_insert(std::list<unsigned>& main_chain, std::list<unsigned>& 
  				178956970, 357913942, 715827882, 1431655766, 2863311530};
 	int	jd_i = 0;
 	int	itm = (4 * element_size) - 1;
-	int	itv;
+	int	itl;
 
-	while (static_cast<int>(l.size()) >= element_size)
+	while (static_cast<int>(size(l)) >= element_size)
 	{
-		itv = (jacobsthal_diff[jd_i] * element_size) - 1;
-		if (itv >= static_cast<int>(l.size()) || jd_i >= 32)
+		itl = (jacobsthal_diff[jd_i] * element_size) - 1;
+		if (itl >= static_cast<int>(size(l)) || jd_i >= 32)
 		{
-			itv = l.size() - 1 - (l.size() % element_size); //% element_size in case there are leftover numbers (uneven pairs) from previous recursion
-			itm = main_chain.size() + element_size - 1;
+			itl = size(l) - 1 - (size(l) % element_size); //% element_size in case there are leftover numbers (uneven pairs) from previous recursion
+			itm = size(main_chain) + element_size - 1;
 		}
-		while (itv >= 0)
+		while (itl >= 0)
 		{
-			insert_element(main_chain, add_it(main_chain.begin(), itm - element_size + 1), add_it(l.begin(), itv), element_size);
-			l.erase(add_it(l.begin(), itv - element_size + 1), add_it(l.begin(), itv + 1));
-			itv -= element_size;
+			insert_element(main_chain, add_it(main_chain.begin(), itm - element_size + 1), add_it(l.begin(), itl), element_size);
+			l.erase(add_it(l.begin(), itl - element_size + 1), add_it(l.begin(), itl + 1));
+			itl -= element_size;
 		}
+		print_list(main_chain, "		m: ");
+		print_list(l, "		l: ");
 		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * element_size);
 		jd_i++;
 	}
@@ -111,9 +113,13 @@ void	sort_elements(std::list<unsigned>& l, const int element_size)
 void	fj_list(std::list<unsigned>& l, int element_size)
 {
 	sort_pairs(l, element_size);
-	if (l.size() / element_size > 2)
+	std::cout << element_size;
+	print_list(l, "blist: ");
+	if (size(l) / element_size > 2) // * 2?
 		fj_list(l, element_size * 2);
 	else
 		return ;
 	sort_elements(l, element_size);
+	std::cout << element_size;
+	print_list(l, "list: ");
 }

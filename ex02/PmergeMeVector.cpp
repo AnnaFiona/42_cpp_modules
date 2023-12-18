@@ -72,6 +72,8 @@ void	binary_search_insert(std::vector<unsigned>& main_chain, std::vector<unsigne
 		{
 			insert_element(main_chain, main_chain.begin() + itm - element_size + 1, v.begin() + itv, element_size);
 			v.erase(v.begin() + itv - element_size + 1, v.begin() + itv + 1);
+			print_vector(main_chain, "		m: ");
+			print_vector(v, "		v: ");
 			itv -= element_size;
 		}
 		itm += (jacobsthal_diff[jd_i] * element_size) + (jacobsthal_diff[jd_i + 1] * element_size);
@@ -98,9 +100,13 @@ void	sort_elements(std::vector<unsigned>& v, const int element_size)
 void	fj_vector(std::vector<unsigned>& v, int element_size)
 {
 	sort_pairs(v, element_size);
-	if (v.size() / element_size > 2)
+	std::cout << element_size;
+	print_vector(v, "bvector: ");
+	if (v.size() / element_size > 2) // * 2?
 		fj_vector(v, element_size * 2);
 	else
 		return ;
 	sort_elements(v, element_size);
+	std::cout << element_size;
+	print_vector(v, "vector: ");
 }

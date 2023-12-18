@@ -9,6 +9,15 @@ void	print_vector(std::vector<unsigned> v, const std::string explicit_message)
 	std::cout << std::endl;
 }
 
+void	print_list(std::list<unsigned> l, const std::string explicit_message)
+{
+	if (!explicit_message.empty())
+		std::cout << explicit_message << " ";
+	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
+		std::cout << *it << ", ";
+	std::cout << std::endl;
+}
+
 void	fill_vector(std::vector<unsigned>& v, const char **arr)
 {
 	std::stringstream	stream;
@@ -46,15 +55,6 @@ int	get_time()
 	if (gettimeofday(&now, NULL) == - 1)
 		throw (std::runtime_error("could not get time"));
 	return (now.tv_usec);
-}
-
-void	print_list(std::list<unsigned> l, const std::string explicit_message)
-{
-	if (!explicit_message.empty())
-		std::cout << explicit_message << " ";
-	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
-		std::cout << *it << ", ";
-	std::cout << std::endl;
 }
 
 void	PmergeMe(const int argc, const char **arr)

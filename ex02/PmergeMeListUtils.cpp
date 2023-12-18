@@ -1,4 +1,12 @@
 #include "PmergeMe.hpp"
+int	size(std::list<unsigned> l)
+{
+	int	size = 0;
+
+	for (std::list<unsigned>::const_iterator it = l.begin(); it != l.end(); it++)
+		size++;
+	return (size);
+}
 
 int	get_working_size(std::list<unsigned>::const_iterator begin, std::list<unsigned>::const_iterator end)
 {

@@ -9,6 +9,8 @@
 #include <list>
 
 //PmergeMe.cpp
+void	print_vector(std::vector<unsigned> v, const std::string explicit_message);
+void	print_list(std::list<unsigned> l, const std::string explicit_message);
 void	PmergeMe(const int argc, const char **arr);
 
 //PmergeMeList.cpp
@@ -20,7 +22,8 @@ void	sort_elements(std::list<unsigned>& l, const int element_size);
 void	fj_list(std::list<unsigned>& l, int element_size);
 
 //PmergeMeListUtils.cpp
-int	get_working_size(std::list<unsigned>::const_iterator begin, std::list<unsigned>::const_iterator end);
+int		size(std::list<unsigned> l);
+int		get_working_size(std::list<unsigned>::const_iterator begin, std::list<unsigned>::const_iterator end);
 std::list<unsigned>::const_iterator	subtract_it(std::list<unsigned>::const_iterator it, int subtract);
 std::list<unsigned>::iterator	subtract_it(std::list<unsigned>::iterator it, int subtract);
 std::list<unsigned>::const_iterator	add_it(std::list<unsigned>::const_iterator it, int add);
