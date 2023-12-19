@@ -98,7 +98,10 @@ void	sort_elements(std::vector<unsigned>& v, const int element_size)
 void	fj_vector(std::vector<unsigned>& v, int element_size)
 {
 	sort_pairs(v, element_size);
-	if (v.size() / (element_size * 2) > 2)
+	if (v.size() / element_size > 2)
 		fj_vector(v, element_size * 2);
+	else
+		return ;
 	sort_elements(v, element_size);
 }
+

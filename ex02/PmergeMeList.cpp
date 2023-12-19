@@ -107,7 +107,9 @@ void	sort_elements(std::list<unsigned>& l, const int element_size)
 void	fj_list(std::list<unsigned>& l, int element_size)
 {
 	sort_pairs(l, element_size);
-	if (size(l) / (element_size * 2) > 2)
+	if (size(l) / element_size > 2)
 		fj_list(l, element_size * 2);
+	else
+		return ;
 	sort_elements(l, element_size);
 }
