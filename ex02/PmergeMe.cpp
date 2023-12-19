@@ -61,13 +61,10 @@ void	fill_list(std::list<unsigned>& l, const char **arr)
 	}
 }
 
-int	get_time()
+double	get_time(const clock_t before, const clock_t after)
 {
-	struct timeval	now;
-
-	if (gettimeofday(&now, NULL) == - 1)
-		throw (std::runtime_error("could not get time"));
-	return (now.tv_usec);
+	double	time = static_cast<double>(after - before) / CLOCKS_PER_SEC;
+	return (time);
 }
 
 void	PmergeMe(const int argc, const char **arr)
@@ -75,19 +72,19 @@ void	PmergeMe(const int argc, const char **arr)
 	std::vector<unsigned>	v;
 	v.resize(argc - 1);
 	std::list<unsigned>		l;
-	int	before_t;
-	int	after_t;
+	clock_t	before_t;
+	clock_t	after_t;
 
 	print_arr(arr, "unsorted: ");
-	before_t = get_time();
+	before_t = clock();
 	fill_vector(v, arr);
 	fj_vector(v, 1);
-	after_t = get_time();
+	after_t = clock();
 	print_vector(v, "sorted: ");
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " << after_t - before_t << " microseconds" << std::endl;
-	before_t = get_time();
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " << std::fixed << get_time(before_t, after_t) << " seconds" << std::endl;
+	before_t = clock();
 	fill_list(l, arr);
 	fj_list(l, 1);
-	after_t = get_time();
-	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:   " << after_t - before_t << " microseconds" << std::endl;
+	after_t = clock();
+	std::cout << "Time to process a range of " << argc - 1 << " elements with std::list:   " << get_time(before_t, after_t) << " seconds" << std::endl;
 }
