@@ -24,6 +24,8 @@ bool	is_operator(std::string::const_iterator it, std::string::const_iterator end
 
 long int get_result(const long int a, const long int b, const int operant)
 {
+	if (b == 0 && operant == '/')
+		throw std::runtime_error("operation is invalid: can't divide through 0");
 	switch (operant) {
 		case '+' : 
 			return (a + b);
@@ -32,10 +34,10 @@ long int get_result(const long int a, const long int b, const int operant)
 		case '*' : 
 			return (a * b);
 		case '/' : 
-			return (a / b);		
+			return (a / b);
+		default:
+			return (0); //should never happen
 	}
-	//can't be anything else
-	return (0); //should never happen
 }
 
 void	do_operation(std::stack<int>& stack, const char operant)
@@ -72,6 +74,6 @@ void	RPN(const std::string operation)
 		it++;
 	}
 	if (stack.size() != 1)
-		throw std::runtime_error("operation is invalid2");
+		throw std::runtime_error("operation is invalid");
 	std::cout << stack.top() << std::endl;
 }
