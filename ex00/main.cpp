@@ -7,5 +7,5 @@ int main(int argc, char* argv[])
 		std::cout << "Error: please give one infile as argument." << std::endl;
 		return (0);
 	}
-	BitcoinExchange("data_bases/data.csv", argv[1]);
+	BitcoinExchange("data.csv", argv[1]);
 }

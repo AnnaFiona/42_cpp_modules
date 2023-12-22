@@ -6,7 +6,7 @@
 #include <ctime>
 #include <map>
 
-//is_???() functions return bool
+//is_*() functions return bool
 
 //BitcoinExchange.cpp
 std::pair<std::string, float>	process_line(const std::string line);

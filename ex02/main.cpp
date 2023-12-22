@@ -34,8 +34,8 @@ int main(const int argc, const char *argv[])
 		return 0;
 	}
 	try {
-		check_array(argv); //throws exception
-		PmergeMe(argc, argv); //throws exception (not my functions)
+		check_array(argv);
+		PmergeMe(argc, argv);
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 	}

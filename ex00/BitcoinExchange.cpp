@@ -26,7 +26,7 @@ void	get_data(std::map<std::string, float>& data, const std::string data_base_na
 
 	data_base.open(data_base_name.c_str());
 	if (!data_base)
-		throw std::runtime_error("could not open file");
+		throw std::runtime_error("could not open 'data.csv'");
 
 	std::getline(data_base, line);
 	if (line != "date,exchange_rate")
@@ -62,7 +62,7 @@ std::pair<std::string, float>	process_infile_line(const std::string line)
 	std::string			time;
 	std::string			pipe;
 	std::string			value;
-	std::string			end; // needed?
+	std::string			end;
 
 	stream >> time;
 	stream >> pipe;
