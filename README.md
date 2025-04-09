@@ -1,6 +1,6 @@
 # 42_cpp_modules
 
-This repository contains my solutions for the 42 C++ Piscine modules. Each module introduces key concepts of C++ programming, progressively building on the previous ones. We were not allowed to use 
+This repository contains my solutions for the 42 C++ Piscine modules. Each module introduces key concepts of C++ programming, progressively building on the previous ones.
 
 ## General Rules
 - **Compilation Rules:**
