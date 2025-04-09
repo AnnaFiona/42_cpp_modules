@@ -1,0 +1,11 @@
+default-constructor of WrongAnimal 'WrongAnimal' called
+default-constructor of WrongAnimal 'WrongAnimal' called
+copy assignment operator of WrongAnimal 'WrongAnimal' called
+copy-constructor of WrongAnimal 'WrongAnimal' called
+...
+...
+...
+copy assignment operator of WrongAnimal 'Cow' called
+destructor of WrongAnimal 'WrongAnimal' called
+destructor of WrongAnimal 'Cow' called
+destructor of WrongAnimal 'Cow' called
